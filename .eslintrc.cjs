@@ -25,4 +25,14 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['**/tailwind.config.js', '**/tailwind.config.ts'],
+      rules: {
+        'import/extensions': 'off',
+        'global-require': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+  ],
 };

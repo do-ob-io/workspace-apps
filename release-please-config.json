@@ -1,6 +1,7 @@
 {
     "packages": {
         "apps/mobile": {},
-        "apps/web": {}
+        "apps/web": {},
+        "packages/tailwind-base": {}
     }
 }

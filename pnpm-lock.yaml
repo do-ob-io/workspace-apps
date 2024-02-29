@@ -92,7 +92,13 @@ importers:
 
   apps/mobile: {}
 
-  apps/web: {}
+  apps/web:
+    dependencies:
+      '@/tailwind-base':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-base
+
+  packages/tailwind-base: {}
 
 packages:
 
