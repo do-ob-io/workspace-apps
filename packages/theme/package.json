@@ -1,0 +1,35 @@
+{
+  "name": "@/theme",
+  "version": "0.1.0",
+  "type": "module",
+  "files": ["dist", "types", "./style.css"],
+  "types": "types/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./config": {
+      "types": "./types/config.d.ts",
+      "require": "./dist/config.cjs",
+      "import": "./dist/config.js"
+    },
+    "./plugin": {
+      "types": "./types/plugin.d.ts",
+      "require": "./dist/plugin.cjs",
+      "import": "./dist/plugin.js"
+    },
+    "./style.css": {
+      "require": "./style.css",
+      "import": "./style.css"
+    }
+  },
+  "scripts": {
+    "build": "pnpm run build:dist && pnpm run build:types && pnpm run build:css",
+    "build:dist": "vite build --mode production",
+    "build:types": "tsc -p tsconfig.json"
+  }
+}

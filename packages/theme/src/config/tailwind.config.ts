@@ -1,17 +1,19 @@
 import type { Config } from 'tailwindcss';
 
-const config: Config = {
-  presets: [
-    require('@/theme').config,
-  ],
-  darkMode: 'class',
+export const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './**/*.{jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
+      colors: {
+        primary: {
+          DEFAULT: 'rgb(var(--color-primary-default) / <alpha-value>)',
+        },
+        secondary: {
+          DEFAULT: 'rgb(var(--color-secondary-default) / <alpha-value>)',
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -19,8 +21,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require('@/theme').plugin,
-  ],
 };
+
 export default config;

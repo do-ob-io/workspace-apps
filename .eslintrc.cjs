@@ -7,12 +7,19 @@ module.exports = {
   ],
   rules: {
     'import/extensions': [
-      'error',
+      'never',
       'ignorePackages',
       {
+        ignorePackages: true,
         svg: 'always',
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+
       },
     ],
+    'no-restricted-exports': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-use-before-define': [
@@ -27,7 +34,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/tailwind.config.js', '**/tailwind.config.ts'],
+      files: ['**/tailwind.config.{js,ts,mjs}'],
       rules: {
         'import/extensions': 'off',
         'global-require': 'off',

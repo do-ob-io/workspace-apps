@@ -2,6 +2,6 @@
     "packages": {
         "apps/mobile": {},
         "apps/web": {},
-        "packages/tailwind-base": {}
+        "packages/theme": {}
     }
 }

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { getDefaultConfig } = require('expo/metro-config');
+const { withNativeWind } = require('nativewind/metro');
 const path = require('node:path');
 
 // Find the project and workspace directories
@@ -22,4 +23,4 @@ defaultConfig.resolver.nodeModulesPaths = [
   path.resolve(monorepoRoot, 'node_modules'),
 ];
 
-module.exports = defaultConfig;
+module.exports = withNativeWind(defaultConfig, { input: 'app/global.css' });
