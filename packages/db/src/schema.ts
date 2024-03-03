@@ -1,4 +1,4 @@
-import { pgTable, serial, timestamp, boolean } from 'drizzle-orm/pg-core';
+import { pgTable, serial, timestamp, boolean, integer } from 'drizzle-orm/pg-core';
 
 export const entity = pgTable('entity', {
   id: serial('id').primaryKey().notNull(),
@@ -6,6 +6,6 @@ export const entity = pgTable('entity', {
   updated: timestamp('updated').defaultNow().notNull(),
   publish: timestamp('publish').defaultNow().notNull(),
   deleted: boolean('deleted').notNull().default(false),
-  $owner: serial('owner_id').references(() => entity.id),
-  $creator: serial('creator_id').references(() => entity.id),
+  ownerId: integer('owner_id').references(() => entity.id),
+  creatorId: integer('creator_id').references(() => entity.id),
 });
