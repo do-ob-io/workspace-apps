@@ -11,6 +11,7 @@
     "mobile": "pnpm --filter 'mobile' start",
     "web": "pnpm --filter 'web' dev",
     "packages": "pnpm --filter './packages/**' build",
+    "packages:watch": "pnpm --filter './packages/**' watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -41,8 +42,8 @@
     "postcss": "^8",
     "postcss-import": "^16.0.1",
     "postcss-loader": "^8.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "18.3.0-canary-2f8f77602-20240229",
+    "react-dom": "18.3.0-canary-2f8f77602-20240229",
     "react-native": "^0.73.4",
     "react-native-web": "^0.19.10",
     "tailwindcss": "3.3.2",

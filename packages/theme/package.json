@@ -30,6 +30,9 @@
   "scripts": {
     "build": "pnpm run build:dist && pnpm run build:types",
     "build:dist": "vite build --mode production",
-    "build:types": "tsc -p tsconfig.json"
+    "build:types": "tsc -p tsconfig.json",
+    "watch": "concurrently \"pnpm run watch:dist\" \"pnpm run watch:types\"",
+    "watch:dist": "vite build --mode development --watch",
+    "watch:types": "tsc -p tsconfig.json --watch"
   }
 }
