@@ -2,7 +2,7 @@
 module.exports = {
   presets: [
     require("nativewind/preset"),
-    require('@/theme').configBase
+    require('@-/theme').configBase
   ],
   darkMode: 'class',
   content: ['./app/**/*.{js,jsx,ts,tsx}'],
@@ -10,6 +10,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('@/theme').plugin
+    require('@-/theme').plugin
   ],
 };
