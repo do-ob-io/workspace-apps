@@ -1,3 +1,3 @@
 # Packages
 
-This directory contains publishable shared packages.
+This directory contains potentially publishable shared packages within the workspace.

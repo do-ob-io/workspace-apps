@@ -1,18 +1,17 @@
 import type { Config } from 'tailwindcss';
 
-export const config: Config = {
+/**
+ * A base theme configuration for this Tailwind CSS theme.
+ */
+export const configBase: Config = {
   content: [
     './**/*.{jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: 'rgb(var(--color-primary-default) / <alpha-value>)',
-        },
-        secondary: {
-          DEFAULT: 'rgb(var(--color-secondary-default) / <alpha-value>)',
-        },
+        primary: 'rgb(var(--color-primary-default) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary-default) / <alpha-value>)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -23,4 +22,4 @@ export const config: Config = {
   },
 };
 
-export default config;
+export default configBase;

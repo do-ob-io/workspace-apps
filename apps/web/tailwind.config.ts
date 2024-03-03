@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   presets: [
-    require('@/theme').config,
+    require('@/theme').configBase,
   ],
   darkMode: 'class',
   content: [
