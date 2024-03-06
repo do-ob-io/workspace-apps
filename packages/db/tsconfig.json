@@ -7,7 +7,11 @@
     "emitDeclarationOnly": true,
     "allowImportingTsExtensions": true,
     "outDir": "./dist",
-    "declarationDir": "./types"
+    "declarationDir": "./types",
+    "paths": {
+      "@-/db": ["./src/index.ts"],
+      "@-/db/schema": ["./src/schema.ts"],
+    }
   },
-  "include": ["src"],
+  "include": ["src", "test"],
 }

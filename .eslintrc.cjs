@@ -6,16 +6,17 @@ module.exports = {
     '@amnis/eslint-config-node',
   ],
   rules: {
+    'import/prefer-default-export': 'off',
     'import/extensions': [
-      'never',
+      'off',
       'ignorePackages',
       {
         ignorePackages: true,
         svg: 'always',
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
+        js: 'off',
+        jsx: 'off',
+        ts: 'off',
+        tsx: 'off',
 
       },
     ],

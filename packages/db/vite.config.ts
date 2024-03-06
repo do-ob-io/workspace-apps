@@ -1,7 +1,10 @@
+/// <reference types="vitest" />
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  plugins: [tsconfigPaths()],
   build: {
     target: 'modules',
     lib: {
@@ -21,5 +24,9 @@ export default defineConfig({
         'drizzle-kit',
       ],
     },
+  },
+  test: {
+    include: ['**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+    setupFiles: ['dotenv/config'],
   },
 });
