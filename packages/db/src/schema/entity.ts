@@ -11,6 +11,7 @@ export const entity = pgTable('entity', {
   updated: timestamp('updated').defaultNow().notNull(),
   publish: timestamp('publish').defaultNow().notNull(),
   deleted: boolean('deleted').notNull().default(false),
+  ownerId: uuid('owner_id'),
   creatorId: uuid('creator_id'),
 });
 

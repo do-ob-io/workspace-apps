@@ -8,14 +8,14 @@
     "pnpm": ">=8.12.0"
   },
   "scripts": {
+    "test": "pnpm run packages:test",
     "mobile": "pnpm --filter 'mobile' start",
     "web": "pnpm --filter 'web' dev",
     "packages": "pnpm --filter './packages/**' build",
     "packages:watch": "pnpm --filter './packages/**' watch",
     "packages:test": "pnpm --filter './packages/**' test",
     "db:migrate": "pnpm --filter '@-/db' migrate",
-    "db:studio": "pnpm --filter '@-/db' studio",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db:studio": "pnpm --filter '@-/db' studio"
   },
   "keywords": [],
   "overrides": {

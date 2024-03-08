@@ -2,7 +2,17 @@ import postgres from 'postgres';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import * as schema from '@-/db/schema';
 
-export * from '@-/db/schema';
+export {
+  // Entities
+  entity,
+  role,
+  action,
+
+  // Joins
+  permit,
+  assignment,
+  entitle,
+} from '@-/db/schema';
 
 const DB_URL = process.env.DB_URL || 'postgres://user@localhost:5432/database';
 
