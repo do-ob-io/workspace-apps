@@ -1,4 +1,8 @@
 export {
+  // Core
+  system,
+  session,
+
   // Entities
   entity,
   entityRelations,
@@ -6,6 +10,8 @@ export {
   actionRelations,
   role,
   roleRelations,
+  locale,
+  localeRelations,
 
   // Joins
   permit,

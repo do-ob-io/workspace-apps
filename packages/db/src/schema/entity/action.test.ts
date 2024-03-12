@@ -21,7 +21,7 @@ test('should insert action', async () => {
 
   const resultInsert = await db.insert(action).values({
     id: resultInsertEntity0.id,
-    type: 'create/entity',
+    type: 'query/entity',
   }).returning();
 
   // The result should be an array with a single object.
@@ -33,8 +33,7 @@ test('should insert action', async () => {
   // Expect that a proper action was inserted correctly.
   expect(resultInsertAction0).toMatchObject({
     id: resultInsertEntity0.id,
-    type: 'create/entity',
+    type: 'query/entity',
     description: null,
-    schema: null,
   });
 });

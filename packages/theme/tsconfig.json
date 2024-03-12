@@ -1,13 +1,4 @@
 {
-  "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "isolatedModules": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "allowImportingTsExtensions": true,
-    "outDir": "./dist",
-    "declarationDir": "./types"
-  },
+  "extends": "@do-ob/ts-config",
   "include": ["src"],
 }

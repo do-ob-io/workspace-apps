@@ -1,5 +1,5 @@
 import {
-  pgTable, varchar, uuid, jsonb,
+  pgTable, varchar, uuid, index,
 } from 'drizzle-orm/pg-core';
 
 import { entity } from '../entity.ts';
@@ -11,8 +11,9 @@ export const action = pgTable('action', {
   id: uuid('id').primaryKey().references(() => entity.id),
   type: varchar('type', { length: 32 }).unique().notNull(),
   description: varchar('description', { length: 1024 }),
-  schema: jsonb('schema'),
-});
+}, (table) => ({
+  typeIdx: index('type_idx').on(table.type),
+}));
 
 export type Action = typeof action.$inferSelect;
 export type ActionInsert = typeof action.$inferInsert;
