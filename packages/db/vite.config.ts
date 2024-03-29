@@ -1,32 +1,13 @@
 /// <reference types="vitest" />
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { mergeConfig, defineConfig } from 'vite';
+import { viteLibConfig } from '@do-ob/vite-lib-config';
 
-export default defineConfig({
-  plugins: [tsconfigPaths()],
-  build: {
-    target: 'modules',
-    lib: {
-      entry: {
-        index: resolve(__dirname, 'src/index.ts'),
-      },
-      name: 'Db',
-      formats: ['es', 'cjs'],
+export default mergeConfig(
+  viteLibConfig(),
+  defineConfig({
+    test: {
+      include: ['**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+      setupFiles: ['dotenv/config'],
     },
-    rollupOptions: {
-      output: {
-        exports: 'named',
-      },
-      external: [
-        'drizzle-orm',
-        'drizzle-orm/pg-core',
-        'drizzle-kit',
-      ],
-    },
-  },
-  test: {
-    include: ['**/*.{test,spec}.?(c|m)[jt]s?(x)'],
-    setupFiles: ['dotenv/config'],
-  },
-});
+  }),
+);
