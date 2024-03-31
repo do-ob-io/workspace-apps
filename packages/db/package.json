@@ -1,20 +1,19 @@
 {
   "name": "@-/db",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "files": ["dist", "types"],
-  "types": "types/index.d.ts",
-  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
-      "require": "./dist/index.cjs",
       "import": "./dist/index.js"
     },
     "./*": {
       "import": "./dist/*.js",
-      "require": "./dist/*.cjs",
       "types": "./types/*.d.ts"
     },
     "./index": null
@@ -27,9 +26,7 @@
   "scripts": {
     "test": "vitest --run",
     "build": "vite build --mode production",
-    "watch": "concurrently \"pnpm run watch:dist\" \"pnpm run watch:types\"",
-    "watch:dist": "vite build --mode development --watch",
-    "watch:types": "tsc -p tsconfig.json --watch",
+    "watch": "vite build --mode development --watch",
     "migrate": "pnpm run generate && drizzle-kit push:pg",
     "generate": "drizzle-kit generate:pg --out=./migrations/pg",
     "studio": "drizzle-kit studio --port 3000"

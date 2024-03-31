@@ -1,0 +1,11 @@
+# Query type definition
+type Query {
+  books: [Book]
+}
+
+# Book type definition
+type Book {
+  title: String
+  author: String
+  description: String
+}

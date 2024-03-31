@@ -1,24 +1,25 @@
 {
   "name": "@-/theme",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "files": ["dist", "types", "./style.css"],
-  "types": "types/index.d.ts",
+  "types": "dist/index.d.ts",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
     },
     "./config": {
-      "types": "./types/config.d.ts",
+      "types": "./dist/config.d.ts",
       "require": "./dist/config.cjs",
       "import": "./dist/config.js"
     },
     "./plugin": {
-      "types": "./types/plugin.d.ts",
+      "types": "./dist/plugin.d.ts",
       "require": "./dist/plugin.cjs",
       "import": "./dist/plugin.js"
     },
@@ -28,12 +29,11 @@
     }
   },
   "peerDependencies": {
+    "@-/theme": "workspace:*",
     "tailwindcss": "^3"
   },
   "scripts": {
     "build": "vite build --mode production",
-    "watch": "concurrently \"pnpm run watch:dist\" \"pnpm run watch:types\"",
-    "watch:dist": "vite build --mode development --watch",
-    "watch:types": "tsc -p tsconfig.json --watch"
+    "watch": "vite build --mode development --watch"
   }
 }

@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-export {
-  configBase,
-} from './config/index.ts';
+import { configBase } from './config/tailwind.config.base.ts';
+
+export { configBase };

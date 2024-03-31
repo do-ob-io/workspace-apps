@@ -3,7 +3,8 @@ import {
   expect,
   beforeAll,
 } from 'vitest';
-import { db, entity, action } from '@-/db';
+import { db } from '@-/db';
+import { action, entity } from '@-/db/schema';
 
 beforeAll(async () => {
   // Ensure all rows in the action table are deleted.

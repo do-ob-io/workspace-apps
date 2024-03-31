@@ -1,7 +1,8 @@
 import {
   test, expect, beforeAll,
 } from 'vitest';
-import { db, entity } from '@-/db';
+import { db } from '@-/db';
+import { entity } from '@-/db/schema';
 
 let ownerId: string;
 let creatorId: string;

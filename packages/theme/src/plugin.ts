@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-export {
-  plugin,
-} from './plugin/index.ts';
+import * as plugin from './plugin/tailwind.plugin.ts';
+
+export { plugin };

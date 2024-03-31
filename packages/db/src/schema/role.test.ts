@@ -3,7 +3,8 @@ import {
   expect,
   beforeAll,
 } from 'vitest';
-import { db, entity, role } from '@-/db';
+import { db } from '@-/db';
+import { entity, role } from '@-/db/schema';
 
 beforeAll(async () => {
   // Ensure all rows in the role table are deleted.

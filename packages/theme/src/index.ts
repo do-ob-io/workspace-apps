@@ -1,10 +1,10 @@
-export * from './config.ts';
-export * from './plugin.ts';
+import { configBase } from '@-/theme/config';
+import { plugin } from '@-/theme/plugin';
 
 /**
  * Base theme
  */
-export const base = {
+const base = {
   light: {
     '--color-primary-default': '76 130 233',
     '--color-secondary-default': '76 130 233',
@@ -15,4 +15,4 @@ export const base = {
   },
 };
 
-export default base;
+export { base, configBase, plugin };

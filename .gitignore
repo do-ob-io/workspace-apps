@@ -1,6 +1,12 @@
 # TODO: Remove the following line when production is ready.
 migrations/
 
+# Ignore generated files
+_generated/
+
+# Vite timestamps
+vite.config.ts.timestamp*
+
 # Output
 types/
 dist/
