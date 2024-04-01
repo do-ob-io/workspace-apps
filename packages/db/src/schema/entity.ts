@@ -1,16 +1,17 @@
-import { relations as drzRelations } from 'drizzle-orm';
+import { relations } from 'drizzle-orm';
 import {
   pgTable, timestamp, boolean, uuid,
 } from 'drizzle-orm/pg-core';
 
-import * as assignment from './assignment.ts';
-import * as permit from './permit.ts';
-import * as entitle from './entitle.ts';
+import { assignment } from './assignment.ts';
+import { permit } from './permit.ts';
+import { entitle } from './entitle.ts';
+import { credential } from './credential.ts';
 
 /**
  * Entity table for resting data meta information.
  */
-export const table = pgTable('entity', {
+export const entity = pgTable('entity', {
   id: uuid('id').primaryKey().defaultRandom(),
   created: timestamp('created').defaultNow().notNull(),
   updated: timestamp('updated').defaultNow().notNull(),
@@ -20,25 +21,25 @@ export const table = pgTable('entity', {
   creatorId: uuid('creator_id'),
 });
 
-export type Entity = typeof table.$inferSelect;
-export type EntityInsert = typeof table.$inferInsert;
+export type Entity = typeof entity.$inferSelect;
+export type EntityInsert = typeof entity.$inferInsert;
 
-export const relations = drzRelations(table, ({ one, many }) => ({
+export const entityRelations = relations(entity, ({ one, many }) => ({
   /**
    * The entity that owns this entity.
    */
-  owner: one(table, {
-    fields: [table.ownerId],
-    references: [table.id],
+  owner: one(entity, {
+    fields: [entity.ownerId],
+    references: [entity.id],
     relationName: 'owner',
   }),
 
   /**
    * The entity that created this entity.
    */
-  creator: one(table, {
-    fields: [table.creatorId],
-    references: [table.id],
+  creator: one(entity, {
+    fields: [entity.creatorId],
+    references: [entity.id],
     relationName: 'creator',
   }),
 
@@ -46,20 +47,25 @@ export const relations = drzRelations(table, ({ one, many }) => ({
    * Roles, with bundled permits for actions, that this entity is assigned to.
    * Entities will inherit the permits on the roles they are assigned to.
    */
-  roles: many(assignment.table, { relationName: 'entity' }),
+  roles: many(assignment, { relationName: 'entity' }),
 
   /**
    * Specific actions that this entity has direct permits to perform.
    */
-  actions: many(permit.table, { relationName: 'entity' }),
+  actions: many(permit, { relationName: 'entity' }),
 
   /**
    * Entities that this is entitled to perform actions on.
    */
-  entitlements: many(entitle.table, { relationName: 'entity' }),
+  entitlements: many(entitle, { relationName: 'entity' }),
 
   /**
    * Entities that are entitled to perform actions on this.
    */
-  entitled: many(entitle.table, { relationName: 'target' }),
+  entitled: many(entitle, { relationName: 'target' }),
+
+  /**
+   * Credentials that this entity is registered with.
+   */
+  credentials: many(credential, { relationName: 'subject' }),
 }));

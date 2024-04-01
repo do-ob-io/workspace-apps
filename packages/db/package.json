@@ -9,12 +9,12 @@
   "module": "dist/index.js",
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./*": {
       "import": "./dist/*.js",
-      "types": "./types/*.d.ts"
+      "types": "./dist/*.d.ts"
     },
     "./index": null
   },

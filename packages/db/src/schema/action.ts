@@ -1,28 +1,28 @@
-import { relations as drzRelations } from 'drizzle-orm';
+import { relations } from 'drizzle-orm';
 import {
   pgTable, varchar, uuid, index,
 } from 'drizzle-orm/pg-core';
 
-import * as entity from './entity.ts';
+import { entity } from './entity.ts';
 
 /**
  * Contains actions that can be performed by subjects in the authorization layer.
  */
-export const table = pgTable('action', {
-  id: uuid('id').primaryKey().references(() => entity.table.id),
-  type: varchar('type', { length: 32 }).unique().notNull(),
+export const action = pgTable('action', {
+  id: uuid('id').primaryKey().references(() => entity.id),
+  type: varchar('type', { length: 40 }).unique().notNull(),
   description: varchar('description', { length: 1024 }),
 }, (table) => ({
   typeIdx: index('type_idx').on(table.type),
 }));
 
-export type Action = typeof table.$inferSelect;
-export type ActionInsert = typeof table.$inferInsert;
+export type Action = typeof action.$inferSelect;
+export type ActionInsert = typeof action.$inferInsert;
 
-export const relations = drzRelations(table, ({ one }) => ({
-  entity: one(entity.table, {
-    fields: [table.id],
-    references: [entity.table.id],
+export const actionRelations = relations(action, ({ one }) => ({
+  entity: one(entity, {
+    fields: [action.id],
+    references: [entity.id],
     relationName: 'entity',
   }),
 }));

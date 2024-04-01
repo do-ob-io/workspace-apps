@@ -1,15 +1,15 @@
-import { relations as drzRelations } from 'drizzle-orm';
+import { relations } from 'drizzle-orm';
 import {
   pgTable, varchar, uuid, index, text, unique,
 } from 'drizzle-orm/pg-core';
 
-import * as entity from './entity.ts';
+import { entity }from './entity.ts';
 
 /**
  * Translations for text based on a locale code and a name as key.
  */
-export const table = pgTable('locale', {
-  id: uuid('id').primaryKey().references(() => entity.table.id),
+export const locale = pgTable('locale', {
+  id: uuid('id').primaryKey().references(() => entity.id),
   code: varchar('code', { length: 32 }).notNull(),
   name: varchar('name', { length: 1024 }).notNull(),
   content: text('content'),
@@ -19,13 +19,13 @@ export const table = pgTable('locale', {
   nameIdx: index('name_idx').on(table.name),
 }));
 
-export type Locale = typeof table.$inferSelect;
-export type LocaleInsert = typeof table.$inferInsert;
+export type Locale = typeof locale.$inferSelect;
+export type LocaleInsert = typeof locale.$inferInsert;
 
-export const relations = drzRelations(table, ({ one }) => ({
-  entity: one(entity.table, {
-    fields: [table.id],
-    references: [entity.table.id],
+export const localeRelations = relations(locale, ({ one }) => ({
+  entity: one(entity, {
+    fields: [locale.id],
+    references: [entity.id],
     relationName: 'entity',
   }),
 }));

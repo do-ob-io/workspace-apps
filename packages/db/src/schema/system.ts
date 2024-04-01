@@ -11,7 +11,7 @@ const systemType = pgEnum('system_type', ['boolean', 'number', 'string']);
 /**
  * The system table serves as a registry for global configuration settings.
  */
-export const table = pgTable('system', {
+export const system = pgTable('system', {
   id: uuid('id').primaryKey().defaultRandom(), // Unique system identifier.
   name: varchar('name').notNull().unique(), // Name of the system setting.
   type: systemType('type').notNull(), // Type of the system setting (boolean, number, string).
@@ -19,5 +19,5 @@ export const table = pgTable('system', {
   description: text('description'), // Optional description of the system setting.
 });
 
-export type System = typeof table.$inferSelect;
-export type SystemInsert = typeof table.$inferInsert;
+export type System = typeof system.$inferSelect;
+export type SystemInsert = typeof system.$inferInsert;

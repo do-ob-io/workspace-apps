@@ -1,32 +1,32 @@
-import { relations as drzRelations } from 'drizzle-orm';
+import { relations } from 'drizzle-orm';
 import { pgTable, uuid, primaryKey } from 'drizzle-orm/pg-core';
 
-import * as entity from './entity.ts';
-import * as role from './role.ts';
+import { entity } from './entity.ts';
+import { role } from './role.ts';
 
 /**
  * Assignment table for Many-to-Many entity <-> role relationships for authorization.
  * Roles are a collection of permitted actions.
  */
-export const table = pgTable('assignment', {
-  entityId: uuid('entity_id').references(() => entity.table.id).notNull(),
-  roleId: uuid('role_id').references(() => role.table.id).notNull(),
+export const assignment = pgTable('assignment', {
+  entityId: uuid('entity_id').references(() => entity.id).notNull(),
+  roleId: uuid('role_id').references(() => role.id).notNull(),
 }, (table) => ({
   pk: primaryKey({ columns: [table.entityId, table.roleId] }),
 }));
 
-export type Assignment = typeof table.$inferSelect;
-export type AssignmentInsert = typeof table.$inferInsert;
+export type Assignment = typeof assignment.$inferSelect;
+export type AssignmentInsert = typeof assignment.$inferInsert;
 
-export const relations = drzRelations(table, ({ one }) => ({
-  entity: one(entity.table, {
-    fields: [table.entityId],
-    references: [entity.table.id],
+export const assignmentRelations = relations(assignment, ({ one }) => ({
+  entity: one(entity, {
+    fields: [assignment.entityId],
+    references: [entity.id],
     relationName: 'entity',
   }),
-  role: one(role.table, {
-    fields: [table.roleId],
-    references: [role.table.id],
+  role: one(role, {
+    fields: [assignment.roleId],
+    references: [role.id],
     relationName: 'role',
   }),
 }));
