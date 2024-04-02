@@ -15,7 +15,7 @@ export const role = pgTable('role', {
   color: varchar('color', { length: 7 }),
   icon: varchar('icon', { length: 256 }),
 }, (table) => ({
-  color: check('color_hex', sql`${table.color} ~* '^#[A-Fa-f0-9]{6}$'`),
+  colorHexChk: check('color_hex_chk', sql`${table.color} ~* '^#[A-Fa-f0-9]{6}$'`),
 }));
 
 export type Role = typeof role.$inferSelect;

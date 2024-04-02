@@ -10,10 +10,12 @@ import { entity } from './entity.ts';
  */
 export const action = pgTable('action', {
   id: uuid('id').primaryKey().references(() => entity.id),
-  type: varchar('type', { length: 40 }).unique().notNull(),
+  type: varchar('type', { length: 64 }).unique().notNull(),
+  name: varchar('name', { length: 256 }).notNull(),
   description: varchar('description', { length: 1024 }),
 }, (table) => ({
-  typeIdx: index('type_idx').on(table.type),
+  actionTypeIdx: index('action_type_idx').on(table.type),
+  actionNameIdx: index('action_name_idx').on(table.type),
 }));
 
 export type Action = typeof action.$inferSelect;

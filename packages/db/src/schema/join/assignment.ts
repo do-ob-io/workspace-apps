@@ -1,8 +1,8 @@
 import { relations } from 'drizzle-orm';
 import { pgTable, uuid, primaryKey } from 'drizzle-orm/pg-core';
 
-import { entity } from './entity.ts';
-import { role } from './role.ts';
+import { entity } from '../entity/entity.ts';
+import { role } from '../entity/role.ts';
 
 /**
  * Assignment table for Many-to-Many entity <-> role relationships for authorization.

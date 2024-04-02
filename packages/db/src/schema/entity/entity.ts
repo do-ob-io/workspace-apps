@@ -1,11 +1,13 @@
 import { relations } from 'drizzle-orm';
 import {
-  pgTable, timestamp, boolean, uuid,
+  pgTable, timestamp, boolean, uuid, varchar
 } from 'drizzle-orm/pg-core';
 
-import { assignment } from './assignment.ts';
-import { permit } from './permit.ts';
-import { entitle } from './entitle.ts';
+import { mutate } from '../mutate.ts';
+
+import { assignment } from '../join/assignment.ts';
+import { permit } from '../join/permit.ts';
+import { entitle } from '../join/entitle.ts';
 import { credential } from './credential.ts';
 
 /**
@@ -13,9 +15,9 @@ import { credential } from './credential.ts';
  */
 export const entity = pgTable('entity', {
   id: uuid('id').primaryKey().defaultRandom(),
+  type: varchar('type', { length: 64 }), // The type of entity. Usually a table name connected with this entity.
   created: timestamp('created').defaultNow().notNull(),
   updated: timestamp('updated').defaultNow().notNull(),
-  publish: timestamp('publish').defaultNow().notNull(),
   deleted: boolean('deleted').notNull().default(false),
   ownerId: uuid('owner_id'),
   creatorId: uuid('creator_id'),
@@ -42,6 +44,11 @@ export const entityRelations = relations(entity, ({ one, many }) => ({
     references: [entity.id],
     relationName: 'creator',
   }),
+
+  /**
+   * History of changes to this entity.
+   */
+  mutations: many(mutate, { relationName: 'entity' }),
 
   /**
    * Roles, with bundled permits for actions, that this entity is assigned to.

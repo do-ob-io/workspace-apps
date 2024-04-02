@@ -3,7 +3,7 @@ import {
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
-import { entity } from './entity.ts';
+import { entity } from '../entity.ts';
 
 /**
  * Information about files that can be uploaded.
@@ -14,8 +14,10 @@ export const file = pgTable('file', {
   description: varchar('description', { length: 1024 }),
   mimeType: varchar('mime_type', { length: 64 }).notNull(),
   size: bigint('size', { mode: 'number' }).notNull(), // Size in bytes.
+  path: varchar('path', { length: 2048 }).notNull(),
 }, (table) => ({
-  nameInd: index('name_idx').on(table.name),
+  fileNameIdx: index('file_name_idx').on(table.name),
+  filePathIdx: index('file_path_idx').on(table.path),
 }));
 
 export type File = typeof file.$inferSelect;

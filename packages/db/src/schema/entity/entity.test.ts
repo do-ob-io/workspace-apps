@@ -30,7 +30,6 @@ test('should insert entity', async () => {
     // The created, updated, and publish properties should be a Date object.
     created: expect.any(Date),
     updated: expect.any(Date),
-    publish: expect.any(Date),
     // The deleted property should be a boolean set to false.
     deleted: false,
     // The ownerId property should be null.
@@ -64,7 +63,6 @@ test('should insert entity with owner', async () => {
     // The created, updated, and publish properties should be a Date object.
     created: expect.any(Date),
     updated: expect.any(Date),
-    publish: expect.any(Date),
     // The deleted property should be a boolean set to false.
     deleted: false,
     // The ownerId property should be the same as the previously inserted entity id.

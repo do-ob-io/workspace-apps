@@ -6,20 +6,21 @@ import { relations } from 'drizzle-orm';
 import { file } from './file.ts';
 
 /**
- * Information about images that can be uploaded.
+ * Information about videos that can be uploaded.
  */
-export const image = pgTable('image', {
+export const video = pgTable('video', {
   id: uuid('id').primaryKey().references(() => file.id),
   height: smallint('height').notNull(),
   width: smallint('width').notNull(),
+  length: smallint('length').notNull(),
 });
 
-export type Image = typeof image.$inferSelect;
-export type ImageInsert = typeof image.$inferInsert;
+export type Video = typeof video.$inferSelect;
+export type VideoInsert = typeof video.$inferInsert;
 
-export const imageRelations = relations(image, ({ one }) => ({
+export const videoRelations = relations(video, ({ one }) => ({
   file: one(file, {
-    fields: [image.id],
+    fields: [video.id],
     references: [file.id],
     relationName: 'file',
   }),

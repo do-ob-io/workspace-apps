@@ -17,7 +17,7 @@ export const credential = pgTable('credential', {
   algorithm: smallint('algorithm').notNull(), // The algorithm used to generate the keys.
   subjectId: uuid('subjectId').notNull().references(() => entity.id), // The entity subject that is registered with this credential.
 }, (table) => ({
-  clientIdInx: index('client_id_idx').on(table.clientId),
+  credentialClientIdIdx: index('credential_client_id_idx').on(table.clientId),
 }));
 
 export type Credential = typeof credential.$inferSelect;
