@@ -5,12 +5,14 @@ import { relations, } from 'drizzle-orm';
 
 import { entity } from './entity.ts';
 import { image } from './file/image.ts';
+import { user } from './user.ts';
 
 /**
  * Profile about a particular person.
  */
 export const profile = pgTable('profile', {
   id: uuid('id').primaryKey().references(() => entity.id),
+  userId: uuid('user_id').references(() => user.id), // The user ID that owns the profile.
   givenName: varchar('given_name', { length: 128 }), // The first name of the person.
   familyName: varchar('family_name', { length: 128 }), // The last name of the person.
   additionalName: varchar('additional_name', { length: 128 }), // Additional/middle name of the person.
@@ -20,7 +22,6 @@ export const profile = pgTable('profile', {
   gender: varchar('gender', { length: 128 }), // Gender identity of the person.
   birthDate: timestamp('birth_date'), // Date of birth of the person.
   deathDate: timestamp('death_date'), // Date of death of the person.
-  avatarId: uuid('avatar_id').references(() => image.id), // Avatar image for the person.
   pictureId: uuid('picture_id').references(() => image.id), // Picture of the person.
   coverId: uuid('cover_id').references(() => image.id), // Cover image for the person.
   biography: text('biography'), // Biography of the person.
@@ -38,10 +39,10 @@ export const profileRelations = relations(profile, ({ one }) => ({
     references: [entity.id],
     relationName: 'entity',
   }),
-  avatar: one(image, {
-    fields: [profile.avatarId],
-    references: [image.id],
-    relationName: 'avatar',
+  user: one(user, {
+    fields: [profile.userId],
+    references: [user.id],
+    relationName: 'user',
   }),
   picture: one(image, {
     fields: [profile.pictureId],

@@ -11,8 +11,8 @@ import { user } from './user.ts';
  */
 export const email = pgTable('email', {
   id: uuid('id').primaryKey().references(() => entity.id),
+  userId: uuid('user_id').references(() => user.id),
   address: varchar('address', { length: 255 }).unique().notNull(),
-  userId: uuid('user_id'),
   verified: boolean('verified').notNull().default(false),
 }, (table) => ({
   addressIdx: index('email_address_idx').on(table.address),

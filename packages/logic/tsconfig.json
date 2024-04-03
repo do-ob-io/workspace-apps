@@ -1,0 +1,11 @@
+{
+  "extends": "@do-ob/ts-config",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@-/logic": ["src/server.ts"],
+      "@-/logic/*": ["src/*.ts"]
+    }
+  },
+  "include": ["src"],
+}

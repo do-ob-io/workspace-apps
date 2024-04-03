@@ -1,5 +1,5 @@
 {
-  "name": "@-/api",
+  "name": "@-/logic",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -22,13 +22,11 @@
     "./index": null
   },
   "dependencies": {
-    "@apollo/server": "^4",
-    "graphql": "^16"
+    "@-/db": "workspace:*"
   },
   "scripts": {
     "test": "vitest --run",
-    "build": "pnpm generate && vite build --mode production",
-    "watch": "concurrently --kill-others --names \"API Vite,API CodeGen\" -c \"bgBlue.bold,bgMagenta.bold\" \"vite build --watch --mode production\" \"gql-gen --config codegen.yml --watch 'src/**/*.{ts,graphql}'\"",
-    "generate": "gql-gen --config codegen.yml"
+    "build": "vite build --mode production",
+    "watch": "vite build --watch --mode production"
   }
 }
