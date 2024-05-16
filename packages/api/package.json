@@ -22,8 +22,13 @@
     "./index": null
   },
   "dependencies": {
-    "@apollo/server": "^4",
-    "graphql": "^16"
+    "@apollo/client": "^3.10.4",
+    "@apollo/server": "^4.10.4",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/introspection": "^4.0.3",
+    "@graphql-codegen/typescript": "^4.0.6",
+    "@graphql-codegen/typescript-resolvers": "^4.0.6",
+    "graphql": "^16.8.1"
   },
   "scripts": {
     "test": "vitest --run",
