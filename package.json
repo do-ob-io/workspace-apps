@@ -26,9 +26,9 @@
   "devDependencies": {
     "@-/theme": "workspace:*",
     "@chromatic-com/storybook": "^1.4.0",
-    "@do-ob/eslint-config": "^1.2.0",
-    "@do-ob/ts-config": "^1.1.0",
-    "@do-ob/vite-lib-config": "^2.1.3",
+    "@do-ob/eslint-config": "^2.1.1",
+    "@do-ob/ts-config": "^2.0.0",
+    "@do-ob/vite-lib-config": "^3.0.1",
     "@parcel/watcher": "^2.4.1",
     "@storybook/addon-essentials": "^8.1.1",
     "@storybook/addon-interactions": "^8.1.1",
