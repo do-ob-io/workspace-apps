@@ -1,6 +1,9 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   presets: [
+    require('nativewind/preset'),
     require('@-/theme').configBase
   ],
   darkMode: 'class',
