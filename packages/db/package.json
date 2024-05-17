@@ -31,8 +31,8 @@
     "test": "vitest --run",
     "build": "vite build --mode production",
     "watch": "vite build --mode development --watch",
-    "migrate": "pnpm run generate && drizzle-kit push:pg",
-    "generate": "drizzle-kit generate:pg --out=./migrations/pg",
+    "migrate": "pnpm run generate && drizzle-kit push",
+    "generate": "drizzle-kit generate",
     "studio": "drizzle-kit studio --port 3000"
   }
 }
