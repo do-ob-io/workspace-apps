@@ -26,7 +26,7 @@
   "devDependencies": {
     "@-/theme": "workspace:*",
     "@chromatic-com/storybook": "^1.4.0",
-    "@do-ob/eslint-config": "^2.1.1",
+    "@do-ob/eslint-config": "^2.1.2",
     "@do-ob/ts-config": "^2.0.0",
     "@do-ob/vite-lib-config": "^3.0.1",
     "@parcel/watcher": "^2.4.1",
