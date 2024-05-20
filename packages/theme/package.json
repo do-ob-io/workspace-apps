@@ -29,8 +29,7 @@
     }
   },
   "peerDependencies": {
-    "@-/theme": "workspace:*",
-    "tailwindcss": "3.4.3"
+    "@-/theme": "workspace:*"
   },
   "scripts": {
     "build": "vite build --mode production",

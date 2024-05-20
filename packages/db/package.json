@@ -21,12 +21,6 @@
     },
     "./index": null
   },
-  "dependencies": {
-    "drizzle-kit": "^0.21.2",
-    "drizzle-orm": "^0.30.10",
-    "pg": "^8.11.5",
-    "postgres": "^3.4.4"
-  },
   "scripts": {
     "test": "vitest --run",
     "build": "vite build --mode production",

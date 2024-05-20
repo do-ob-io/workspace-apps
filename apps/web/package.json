@@ -2,6 +2,7 @@
   "name": "web",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,11 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@-/theme": "workspace:*",
-    "@babel/core": "^7.24.5",
-    "next": "14.3.0-canary.66",
-    "react": "19.0.0-rc-915b914b3a-20240515",
-    "react-dom": "19.0.0-rc-915b914b3a-20240515",
-    "tailwindcss": "3.4.3"
+    "@-/theme": "workspace:*"
   }
 }
