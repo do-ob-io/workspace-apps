@@ -2,26 +2,15 @@
   "name": "mobile",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
+  "main": "expo-router/entry",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start -c",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
   "dependencies": {
-    "@-/theme": "workspace:*",
-    "@expo/metro-runtime": "^3.2.1",
-    "@expo/webpack-config": "^19.0.1",
-    "expo": "^51.0.8",
-    "expo-status-bar": "^1.12.1",
-    "expo-system-ui": "^3.0.4",
-    "nativewind": "^4.0.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-native": "^0.74.1",
-    "react-native-web": "^0.19.11",
-    "tailwindcss": "3.4.3"
+    "@-/theme": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "~18.2.79",
