@@ -1,6 +1,7 @@
 {
   "extends": "@do-ob/ts-config",
   "compilerOptions": {
+    "types": ["react"],
     "outDir": "./dist",
     "declarationDir": "./dist",
     "jsx": "react-jsx",

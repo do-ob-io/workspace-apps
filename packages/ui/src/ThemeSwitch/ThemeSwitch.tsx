@@ -1,27 +1,26 @@
 'use client';
 
-import React from 'react';
 import { Switch } from '@nextui-org/react';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 
-export function ThemeSwitch() {
+import { useTheme } from '../hooks/useTheme';
 
-  const [ theme, themeSet ] = React.useState<'light' | 'dark'>('light');
+/**
+ * ThemeSwitchProps
+ */
+export interface ThemeSwitchProps {
+  prefer?: 'light' | 'dark';
+}
 
-  React.useLayoutEffect(() => {
-    // Look for the class name light or dark in the body element
-    const prefer = document.body.classList.contains('dark') ? 'dark' : 'light';
-    themeSet(prefer);
-  }, []);
+/**
+ * This switch is used to toggle the theme of the application. It toggles between 'light' and 'dark'
+ * class names that are applied to the html element of the document.
+ */
+export function ThemeSwitch({
+  prefer = 'light'
+}: ThemeSwitchProps) {
 
-  const themeToggle = () => {
-    const next = theme === 'light' ? 'dark' : 'light';
-    themeSet(next);
-    
-    // Add the class name to the body element
-    document.body.classList.remove(theme);
-    document.body.classList.add(next);
-  };
+  const { theme, themeToggle } = useTheme(prefer);
 
   return (
     <Switch

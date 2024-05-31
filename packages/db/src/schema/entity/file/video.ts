@@ -20,8 +20,8 @@ export type VideoInsert = typeof video.$inferInsert;
 
 export const videoRelations = relations(video, ({ one }) => ({
   file: one(file, {
-    fields: [video.id],
-    references: [file.id],
+    fields: [ video.id ],
+    references: [ file.id ],
     relationName: 'file',
   }),
 }));

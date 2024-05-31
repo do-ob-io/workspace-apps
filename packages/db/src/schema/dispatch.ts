@@ -31,14 +31,14 @@ export type DispatchInsert = typeof dispatch.$inferInsert;
 export const dispatchRelations = relations(dispatch, ({ one, many }) => ({
 
   subject: one(entity, {
-    fields: [dispatch.subjectId],
-    references: [entity.id],
+    fields: [ dispatch.subjectId ],
+    references: [ entity.id ],
     relationName: 'subject',
   }),
   
   action: one(action, {
-    fields: [dispatch.actionId],
-    references: [action.id],
+    fields: [ dispatch.actionId ],
+    references: [ action.id ],
     relationName: 'action',
   }),
 

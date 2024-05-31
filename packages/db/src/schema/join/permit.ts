@@ -15,7 +15,7 @@ export const permit = pgTable('permit', {
   entityId: uuid('entity_id').notNull().references(() => entity.id),
   actionId: uuid('action_id').notNull().references(() => action.id),
 }, (table) => ({
-  pk: primaryKey({ columns: [table.entityId, table.actionId] }),
+  pk: primaryKey({ columns: [ table.entityId, table.actionId ] }),
 }));
 
 export type Permit = typeof permit.$inferSelect;
@@ -23,13 +23,13 @@ export type PermitInsert = typeof permit.$inferInsert;
 
 export const permitRelations = relations(permit, ({ one }) => ({
   entity: one(entity, {
-    fields: [permit.entityId],
-    references: [entity.id],
+    fields: [ permit.entityId ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
   action: one(action, {
-    fields: [permit.actionId],
-    references: [action.id],
+    fields: [ permit.actionId ],
+    references: [ action.id ],
     relationName: 'action',
   }),
 }));

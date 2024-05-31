@@ -7,7 +7,7 @@ module.exports = async (env, argv) => {
     {
       ...env,
       babel: {
-        dangerouslyAddModulePathsToTranspile: ['nativewind'],
+        dangerouslyAddModulePathsToTranspile: [ 'nativewind' ],
       },
     },
     argv,
@@ -15,7 +15,7 @@ module.exports = async (env, argv) => {
 
   config.module.rules.push({
     test: /\.css$/i,
-    use: ['postcss-loader'],
+    use: [ 'postcss-loader' ],
   });
 
   config.resolve.fallback = {

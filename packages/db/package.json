@@ -21,6 +21,11 @@
     },
     "./index": null
   },
+  "peerDependencies": {
+    "drizzle-kit": "latest",
+    "drizzle-orm": "latest",
+    "postgres": "latest"
+  },
   "scripts": {
     "test": "vitest --run",
     "build": "vite build --mode production",

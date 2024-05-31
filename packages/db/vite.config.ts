@@ -6,8 +6,8 @@ export default mergeConfig(
   viteLibConfig(),
   defineConfig({
     test: {
-      include: ['**/*.{test,spec}.?(c|m)[jt]s?(x)'],
-      setupFiles: ['dotenv/config'],
+      include: [ '**/*.{test,spec}.?(c|m)[jt]s?(x)' ],
+      setupFiles: [ 'dotenv/config' ],
     },
   }),
 );

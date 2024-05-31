@@ -18,8 +18,8 @@ export type audioInsert = typeof audio.$inferInsert;
 
 export const audioRelations = relations(audio, ({ one }) => ({
   file: one(file, {
-    fields: [audio.id],
-    references: [file.id],
+    fields: [ audio.id ],
+    references: [ file.id ],
     relationName: 'file',
   }),
 }));

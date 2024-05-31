@@ -9,11 +9,11 @@ export default function Route() {
   const { colorScheme } = useColorScheme();
 
   return (
-    <View className='flex-1 bg-background'>
+    <View className="flex-1 bg-background">
       <View className="flex-1 items-center justify-center">
         <Text
           selectable={false}
-          className='text-foreground'
+          className="text-foreground"
         >
             Hello React-Native/Expo Mobile Application with NativeWind!
         </Text>

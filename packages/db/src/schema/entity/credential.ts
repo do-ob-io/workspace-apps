@@ -1,7 +1,7 @@
 import {
   pgTable, varchar, uuid, index, text, smallint
 } from 'drizzle-orm/pg-core';
-import { relations, } from 'drizzle-orm';
+import { relations } from 'drizzle-orm';
 
 import { entity } from './entity.ts';
 
@@ -25,13 +25,13 @@ export type CredentialInsert = typeof credential.$inferInsert;
 
 export const credentialRelations = relations(credential, ({ one }) => ({
   entity: one(entity, {
-    fields: [credential.id],
-    references: [entity.id],
+    fields: [ credential.id ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
   subject: one(entity, {
-    fields: [credential.subjectId],
-    references: [entity.id],
+    fields: [ credential.subjectId ],
+    references: [ entity.id ],
     relationName: 'subject',
   }),
 }));

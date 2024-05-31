@@ -1,7 +1,7 @@
 import {
   pgTable, varchar, uuid, index, text, timestamp,
 } from 'drizzle-orm/pg-core';
-import { relations, } from 'drizzle-orm';
+import { relations } from 'drizzle-orm';
 
 import { entity } from './entity.ts';
 import { image } from './file/image.ts';
@@ -35,23 +35,23 @@ export type ProfileInsert = typeof profile.$inferInsert;
 
 export const profileRelations = relations(profile, ({ one }) => ({
   entity: one(entity, {
-    fields: [profile.id],
-    references: [entity.id],
+    fields: [ profile.id ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
   user: one(user, {
-    fields: [profile.userId],
-    references: [user.id],
+    fields: [ profile.userId ],
+    references: [ user.id ],
     relationName: 'user',
   }),
   picture: one(image, {
-    fields: [profile.pictureId],
-    references: [image.id],
+    fields: [ profile.pictureId ],
+    references: [ image.id ],
     relationName: 'picture',
   }),
   cover: one(image, {
-    fields: [profile.coverId],
-    references: [image.id],
+    fields: [ profile.coverId ],
+    references: [ image.id ],
     relationName: 'cover',
   }),
 }));

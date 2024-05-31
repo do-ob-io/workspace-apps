@@ -17,6 +17,9 @@
     },
     "./index": null
   },
+  "peerDependencies": {
+    "@apollo/server": "latest"
+  },
   "scripts": {
     "test": "vitest --run",
     "build": "pnpm generate && vite build --mode production",

@@ -10,6 +10,7 @@ try {
   typeDefs = readFileSync(schemaFile, { encoding: 'utf8' });
 } catch (error) {
   console.error(`Failed to read the GraphQL schema file: ${error}`);
+  process.exit(1);
 }
 
 /**

@@ -13,7 +13,7 @@ import { entity } from './entity/entity.ts';
 /**
  * Possible operations to a historical change.
  */
-export const mutateOperation = pgEnum('mutate_operation', ['create', 'update', 'delete']);
+export const mutateOperation = pgEnum('mutate_operation', [ 'create', 'update', 'delete' ]);
 
 /**
  * Log of mutations to records.
@@ -32,14 +32,14 @@ export type MutateInsert = typeof mutate.$inferInsert;
 
 export const mutateRelations = relations(mutate, ({ one }) => ({
   dispatch: one(dispatch, {
-    fields: [mutate.dispatchId],
-    references: [dispatch.id],
+    fields: [ mutate.dispatchId ],
+    references: [ dispatch.id ],
     relationName: 'dispatch',
   }),
   
   entity: one(entity, {
-    fields: [mutate.entityId],
-    references: [entity.id],
+    fields: [ mutate.entityId ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
 }));

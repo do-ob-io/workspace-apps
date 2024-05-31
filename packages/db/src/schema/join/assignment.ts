@@ -12,7 +12,7 @@ export const assignment = pgTable('assignment', {
   entityId: uuid('entity_id').references(() => entity.id).notNull(),
   roleId: uuid('role_id').references(() => role.id).notNull(),
 }, (table) => ({
-  pk: primaryKey({ columns: [table.entityId, table.roleId] }),
+  pk: primaryKey({ columns: [ table.entityId, table.roleId ] }),
 }));
 
 export type Assignment = typeof assignment.$inferSelect;
@@ -20,13 +20,13 @@ export type AssignmentInsert = typeof assignment.$inferInsert;
 
 export const assignmentRelations = relations(assignment, ({ one }) => ({
   entity: one(entity, {
-    fields: [assignment.entityId],
-    references: [entity.id],
+    fields: [ assignment.entityId ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
   role: one(role, {
-    fields: [assignment.roleId],
-    references: [role.id],
+    fields: [ assignment.roleId ],
+    references: [ role.id ],
     relationName: 'role',
   }),
 }));

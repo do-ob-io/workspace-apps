@@ -31,8 +31,8 @@ export const entityRelations = relations(entity, ({ one, many }) => ({
    * The entity that owns this entity.
    */
   owner: one(entity, {
-    fields: [entity.ownerId],
-    references: [entity.id],
+    fields: [ entity.ownerId ],
+    references: [ entity.id ],
     relationName: 'owner',
   }),
 
@@ -40,8 +40,8 @@ export const entityRelations = relations(entity, ({ one, many }) => ({
    * The entity that created this entity.
    */
   creator: one(entity, {
-    fields: [entity.creatorId],
-    references: [entity.id],
+    fields: [ entity.creatorId ],
+    references: [ entity.id ],
     relationName: 'creator',
   }),
 

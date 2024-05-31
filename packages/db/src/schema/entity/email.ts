@@ -24,14 +24,14 @@ export type EmailInsert = typeof email.$inferInsert;
 
 export const emailRelations = relations(email, ({ one }) => ({
   entity: one(entity, {
-    fields: [email.id],
-    references: [entity.id],
+    fields: [ email.id ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
 
   user: one(user, {
-    fields: [email.userId],
-    references: [user.id],
+    fields: [ email.userId ],
+    references: [ user.id ],
     relationName: 'user',
   }),
 }));

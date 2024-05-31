@@ -28,14 +28,14 @@ export type UserInsert = typeof user.$inferInsert;
 
 export const userRelations = relations(user, ({ one, many }) => ({
   entity: one(entity, {
-    fields: [user.id],
-    references: [entity.id],
+    fields: [ user.id ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
 
   avatar: one(image, {
-    fields: [user.avatarId],
-    references: [image.id],
+    fields: [ user.avatarId ],
+    references: [ image.id ],
     relationName: 'avatar',
   }),
 

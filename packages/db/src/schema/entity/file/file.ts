@@ -4,14 +4,13 @@ import {
 import { relations } from 'drizzle-orm';
 
 import { entity } from '../entity.ts';
-import { profile } from '../profile.ts';
 
 /**
  * Information about files that can be uploaded.
  */
 export const file = pgTable('file', {
   id: uuid('id').primaryKey().references(() => entity.id),
-  authorId: uuid('author_id').notNull().references(() => profile.id),
+  authorId: uuid('author_id').notNull().references(() => entity.id),
   name: varchar('name', { length: 32 }).unique().notNull(),
   description: varchar('description', { length: 1024 }),
   mimeType: varchar('mime_type', { length: 64 }).notNull(),
@@ -27,14 +26,14 @@ export type FileInsert = typeof file.$inferInsert;
 
 export const fileRelations = relations(file, ({ one }) => ({
   entity: one(entity, {
-    fields: [file.id],
-    references: [entity.id],
+    fields: [ file.id ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
 
-  author: one(profile, {
-    fields: [file.authorId],
-    references: [profile.id],
+  author: one(entity, {
+    fields: [ file.authorId ],
+    references: [ entity.id ],
     relationName: 'author',
   }),
 }));

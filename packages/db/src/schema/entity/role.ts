@@ -23,8 +23,8 @@ export type RoleInsert = typeof role.$inferInsert;
 
 export const roleRelations = relations(role, ({ one }) => ({
   entity: one(entity, {
-    fields: [role.id],
-    references: [entity.id],
+    fields: [ role.id ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
 }));

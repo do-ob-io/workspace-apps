@@ -23,8 +23,8 @@ export type ActionInsert = typeof action.$inferInsert;
 
 export const actionRelations = relations(action, ({ one }) => ({
   entity: one(entity, {
-    fields: [action.id],
-    references: [entity.id],
+    fields: [ action.id ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
 }));

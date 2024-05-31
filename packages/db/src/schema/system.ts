@@ -6,7 +6,7 @@ import {
 /**
  * The possible data types for a system settings.
  */
-export const systemType = pgEnum('system_type', ['boolean', 'number', 'string']);
+export const systemType = pgEnum('system_type', [ 'boolean', 'number', 'string' ]);
 
 /**
  * The system table serves as a registry for global configuration settings.

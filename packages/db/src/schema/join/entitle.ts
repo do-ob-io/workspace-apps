@@ -12,7 +12,7 @@ export const entitle = pgTable('entitle', {
   targetId: uuid('target_id').notNull().references(() => entity.id),
   actionId: uuid('action_id').notNull().references(() => action.id),
 }, (table) => ({
-  pk: primaryKey({ columns: [table.entityId, table.targetId, table.actionId] }),
+  pk: primaryKey({ columns: [ table.entityId, table.targetId, table.actionId ] }),
 }));
 
 export type Entitle = typeof entitle.$inferSelect;
@@ -20,18 +20,18 @@ export type EntitleInsert = typeof entitle.$inferInsert;
 
 export const entitleRelations = relations(entitle, ({ one }) => ({
   entity: one(entity, {
-    fields: [entitle.entityId],
-    references: [entity.id],
+    fields: [ entitle.entityId ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
   target: one(entity, {
-    fields: [entitle.targetId],
-    references: [entity.id],
+    fields: [ entitle.targetId ],
+    references: [ entity.id ],
     relationName: 'target',
   }),
   action: one(action, {
-    fields: [entitle.actionId],
-    references: [action.id],
+    fields: [ entitle.actionId ],
+    references: [ action.id ],
     relationName: 'action',
   }),
 }));

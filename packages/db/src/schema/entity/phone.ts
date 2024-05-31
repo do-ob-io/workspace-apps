@@ -21,14 +21,14 @@ export type PhoneInsert = typeof phone.$inferInsert;
 
 export const phoneRelations = relations(phone, ({ one }) => ({
   entity: one(entity, {
-    fields: [phone.id],
-    references: [entity.id],
+    fields: [ phone.id ],
+    references: [ entity.id ],
     relationName: 'entity',
   }),
   
   user: one(user, {
-    fields: [phone.userId],
-    references: [user.id],
+    fields: [ phone.userId ],
+    references: [ user.id ],
     relationName: 'user',
   }),
 }));

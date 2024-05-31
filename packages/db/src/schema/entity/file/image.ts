@@ -21,8 +21,8 @@ export type ImageInsert = typeof image.$inferInsert;
 
 export const imageRelations = relations(image, ({ one }) => ({
   file: one(file, {
-    fields: [image.id],
-    references: [file.id],
+    fields: [ image.id ],
+    references: [ file.id ],
     relationName: 'file',
   }),
 }));
