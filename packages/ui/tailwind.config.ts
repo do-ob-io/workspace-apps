@@ -8,7 +8,7 @@ const config: Config = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   plugins: [
-    nextui
+    nextui(),
   ],
 };
 export default config;
