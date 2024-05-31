@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import React from 'react';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} dark theme-dark`}>{children}</body>
+      <body className={`${inter.className} dark`}>
+        {children}
+      </body>
     </html>
   );
 }

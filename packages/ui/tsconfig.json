@@ -1,0 +1,19 @@
+{
+  "extends": "@do-ob/ts-config",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "jsx": "react-jsx",
+    "rootDir": "./src",
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@-/ui": ["src/index.ts"],
+      "@-/ui/*": ["src/*.ts"]
+    },
+    "allowImportingTsExtensions": false,
+    "emitDeclarationOnly": false,
+    "noEmit": false,
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

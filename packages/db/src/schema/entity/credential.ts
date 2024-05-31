@@ -11,7 +11,7 @@ import { entity } from './entity.ts';
 export const credential = pgTable('credential', {
   id: uuid('id').primaryKey().references(() => entity.id),
   clientId: varchar('client_id', { length: 64 }).notNull(), // The credential identifier provided by the client.
-  authenticatorName: varchar('authenticator_name', { length: 64 }).notNull(), // The name of the authenticator used to generate the public key.
+  aaguid: varchar('aaguid', { length: 128 }), // The Authenticator Attestation Globally Unique Identifier https://fidoalliance.org/metadata/
   agentName: varchar('agent_name', { length: 256 }).notNull(), // The name of the agent that generated the credential.
   publicKey: text('public_key').notNull(), // The public key used to verify signatures.
   algorithm: smallint('algorithm').notNull(), // The algorithm used to generate the keys.

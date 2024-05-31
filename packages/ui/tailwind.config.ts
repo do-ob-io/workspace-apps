@@ -4,11 +4,11 @@ const { nextui } = require('@nextui-org/react');
 const config: Config = {
   darkMode: 'class',
   content: [
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    '../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   plugins: [
-    nextui(),
+    nextui
   ],
 };
 export default config;
