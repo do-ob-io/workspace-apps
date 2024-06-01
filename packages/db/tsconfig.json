@@ -7,5 +7,5 @@
       "@-/db/*": ["src/*.ts"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "setup"],
 }

@@ -1,6 +1,7 @@
 export * from './schema/dispatch.ts';
 export * from './schema/mutate.ts';
 export * from './schema/session.ts';
+export * from './schema/storage.ts';
 export * from './schema/system.ts';
 
 export * from './schema/entity/action.ts';
