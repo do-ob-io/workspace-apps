@@ -1,5 +1,5 @@
 import {
-  pgTable, uuid, smallint
+  pgTable, uuid, integer, smallint
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
@@ -10,7 +10,8 @@ import { file } from './file.ts';
  */
 export const audio = pgTable('audio', {
   id: uuid('id').primaryKey().references(() => file.id),
-  length: smallint('length').notNull(),
+  length: integer('length').notNull(), // The length of the audio in milliseconds (Max ~28 days).
+  volume: smallint('volume').notNull(), // The volume of the audio in decibels.
 });
 
 export type audio = typeof audio.$inferSelect;

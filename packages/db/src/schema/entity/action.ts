@@ -6,13 +6,18 @@ import {
 import { entity } from './entity.ts';
 
 /**
- * Contains actions that can be performed by subjects in the authorization layer.
+ * Records of available actions that can be performed.
+ * Subjects that can perform actions are controlled in the authorization layer.
+ * 
+ * It was debated if a payload schema should be included in the action table, but it was decided
+ * that the payload schema should be defined in the logic layer that is responsible for the
+ * processing action.
  */
 export const action = pgTable('action', {
   id: uuid('id').primaryKey().references(() => entity.id),
-  type: varchar('type', { length: 64 }).unique().notNull(),
-  name: varchar('name', { length: 256 }).notNull(),
-  description: varchar('description', { length: 1024 }),
+  type: varchar('type', { length: 64 }).unique().notNull(), // A unique type identifier for the action.
+  name: varchar('name', { length: 256 }).notNull(), // A human readable name for the action.
+  description: varchar('description', { length: 1024 }), // A description of what the actions does.
 }, (table) => ({
   actionTypeIdx: index('action_type_idx').on(table.type),
   actionNameIdx: index('action_name_idx').on(table.type),

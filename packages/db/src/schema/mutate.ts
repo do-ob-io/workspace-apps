@@ -16,7 +16,8 @@ import { entity } from './entity/entity.ts';
 export const mutateOperation = pgEnum('mutate_operation', [ 'create', 'update', 'delete' ]);
 
 /**
- * Log of mutations to records.
+ * Defines a log of changes to records on other tables in the database.
+ * This should be very helpful for auditing and debugging as well as reversing.
  */
 export const mutate = pgTable('mutate', {
   id: uuid('id').primaryKey().defaultRandom(), // Unique mutate identifier.

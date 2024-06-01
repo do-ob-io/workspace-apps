@@ -12,14 +12,15 @@ import { entity } from './entity/entity.ts';
 import { action } from './entity/action.ts';
 
 /**
- * Log of mutations to records.
+ * Whenever a subject performs an action, a dispatch is created to apply the action.
+ * Dispatches can happen instantly or be scheduled for a future time.
  */
 export const dispatch = pgTable('dispatch', {
   id: uuid('id').primaryKey().defaultRandom(), // Unique dispatch identifier.
   subjectId: uuid('subject_id').notNull().references(() => entity.id), // The subject ID that is responsible for the dispatch.
   actionId: uuid('action_id').notNull().references(() => action.id), // The action that was/will be dispatched.
   created: timestamp('created').defaultNow().notNull(), // When the dispatch was created.
-  published: timestamp('published').defaultNow().notNull(), // When the dispatch was/will be submitted.
+  submit: timestamp('submit').defaultNow().notNull(), // When the dispatch was/will be submitted.
   payload: jsonb('payload'), // The payload data to send with the action.
   result: jsonb('result'), // The result data from the action.
   message: text('message'), // A message to describe the dispatch.

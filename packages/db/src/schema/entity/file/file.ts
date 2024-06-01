@@ -10,10 +10,9 @@ import { entity } from '../entity.ts';
  */
 export const file = pgTable('file', {
   id: uuid('id').primaryKey().references(() => entity.id),
-  authorId: uuid('author_id').notNull().references(() => entity.id),
-  name: varchar('name', { length: 32 }).unique().notNull(),
-  description: varchar('description', { length: 1024 }),
-  mimeType: varchar('mime_type', { length: 64 }).notNull(),
+  name: varchar('name', { length: 32 }).unique().notNull(), // A hunam readable name for the file.
+  description: varchar('description', { length: 1024 }), // A description of the file.
+  mimeType: varchar('mime_type', { length: 64 }).notNull(), // The MIME type of the file.
   size: bigint('size', { mode: 'number' }).notNull(), // Size in bytes.
   path: varchar('path', { length: 2048 }).notNull(),
 }, (table) => ({
@@ -29,11 +28,5 @@ export const fileRelations = relations(file, ({ one }) => ({
     fields: [ file.id ],
     references: [ entity.id ],
     relationName: 'entity',
-  }),
-
-  author: one(entity, {
-    fields: [ file.authorId ],
-    references: [ entity.id ],
-    relationName: 'author',
   }),
 }));

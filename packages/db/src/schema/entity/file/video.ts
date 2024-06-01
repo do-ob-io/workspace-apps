@@ -1,5 +1,5 @@
 import {
-  pgTable, uuid, smallint
+  pgTable, uuid, smallint, integer
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
@@ -10,9 +10,9 @@ import { file } from './file.ts';
  */
 export const video = pgTable('video', {
   id: uuid('id').primaryKey().references(() => file.id),
-  height: smallint('height').notNull(),
-  width: smallint('width').notNull(),
-  length: smallint('length').notNull(),
+  height: smallint('height').notNull(), // Original height of the video.
+  width: smallint('width').notNull(), // Original width of the video.
+  length: integer('length').notNull(), // The length of the video in milliseconds (Max ~28 days).
 });
 
 export type Video = typeof video.$inferSelect;

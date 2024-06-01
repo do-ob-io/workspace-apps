@@ -15,12 +15,12 @@ import { credential } from './credential.ts';
  */
 export const entity = pgTable('entity', {
   id: uuid('id').primaryKey().defaultRandom(),
-  type: varchar('type', { length: 64 }), // The type of entity. Usually a table name connected with this entity.
-  created: timestamp('created').defaultNow().notNull(),
-  updated: timestamp('updated').defaultNow().notNull(),
-  deleted: boolean('deleted').notNull().default(false),
-  ownerId: uuid('owner_id'),
-  creatorId: uuid('creator_id'),
+  type: varchar('type', { length: 64 }), // The type of entity. Should always be the table name connected with this entity.
+  created: timestamp('created').defaultNow().notNull(), // The time this entity was created.
+  updated: timestamp('updated').defaultNow().notNull(), // The time this entity was last updated.
+  deleted: boolean('deleted').notNull().default(false), // Flag to determine if this entity is to be considered deleted.
+  ownerId: uuid('owner_id'), // The possible entity that owns this entity (null would indicate it is system owned).
+  creatorId: uuid('creator_id'), // The possible entity that created this entity (null would indicate it was system created).
 });
 
 export type Entity = typeof entity.$inferSelect;
