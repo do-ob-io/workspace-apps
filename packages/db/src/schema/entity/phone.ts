@@ -1,5 +1,5 @@
 import {
-  pgTable, varchar, uuid,
+  pgTable, varchar, uuid, boolean,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
@@ -14,6 +14,7 @@ export const phone = pgTable('phone', {
   userId: uuid('user_id').references(() => user.id),
   countryCode: varchar('country_code', { length: 3 }).notNull(), // ISO 3166-1 alpha-3
   number: varchar('number', { length: 14 }).notNull(), // Any number up to 14 digits
+  verified: boolean('verified').notNull().default(false), // If the phone number has been verified.
 });
 
 export type Phone = typeof phone.$inferSelect;

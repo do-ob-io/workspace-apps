@@ -11,7 +11,7 @@ import { file } from './file.ts';
 export const audio = pgTable('audio', {
   id: uuid('id').primaryKey().references(() => file.id),
   length: integer('length').notNull(), // The length of the audio in milliseconds (Max ~28 days).
-  volume: smallint('volume').notNull(), // The volume of the audio in decibels.
+  volume: smallint('volume').notNull(), // The original volume of the audio in decibels.
 });
 
 export type audio = typeof audio.$inferSelect;

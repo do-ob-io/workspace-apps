@@ -14,7 +14,7 @@ export const file = pgTable('file', {
   description: varchar('description', { length: 1024 }), // A description of the file.
   mimeType: varchar('mime_type', { length: 64 }).notNull(), // The MIME type of the file.
   size: bigint('size', { mode: 'number' }).notNull(), // Size in bytes.
-  path: varchar('path', { length: 2048 }).notNull(),
+  path: varchar('path', { length: 2048 }).notNull(), // The path to the file.
 }, (table) => ({
   fileNameIdx: index('file_name_idx').on(table.name),
   filePathIdx: index('file_path_idx').on(table.path),

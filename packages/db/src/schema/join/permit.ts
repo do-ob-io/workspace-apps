@@ -12,8 +12,8 @@ import { action } from '../entity/action.ts';
  * then the entity is authorized to perform that action in the logic layer.
  */
 export const permit = pgTable('permit', {
-  entityId: uuid('entity_id').notNull().references(() => entity.id),
-  actionId: uuid('action_id').notNull().references(() => action.id),
+  entityId: uuid('entity_id').notNull().references(() => entity.id), // The entity that is granted the permit.
+  actionId: uuid('action_id').notNull().references(() => action.id), // The action that the entity is permitted to perform.
 }, (table) => ({
   pk: primaryKey({ columns: [ table.entityId, table.actionId ] }),
 }));

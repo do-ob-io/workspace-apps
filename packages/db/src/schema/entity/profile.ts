@@ -19,7 +19,7 @@ export const profile = pgTable('profile', {
   honorificPrefix: varchar('honorific_prefix', { length: 32 }), // Prefix to the name of the person. (Mr., Mrs., Dr., etc.)
   honorificSuffix: varchar('honorific_suffix', { length: 32 }), // Suffix to the name of the person. (Jr., Sr., III, etc.)
   sex: varchar('sex', { length: 1 }), // M for male or F for female.
-  gender: varchar('gender', { length: 128 }), // Gender identity of the person.
+  gender: varchar('gender', { length: 128 }), // Flexible gender identity of the person.
   birthDate: timestamp('birth_date'), // Date of birth of the person.
   deathDate: timestamp('death_date'), // Date of death of the person.
   pictureId: uuid('picture_id').references(() => image.id), // Picture of the person.
