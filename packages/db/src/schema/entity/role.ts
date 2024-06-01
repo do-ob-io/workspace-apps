@@ -10,7 +10,7 @@ import { image } from './file/image.ts';
  * Roles for grouping actions together for authorization.
  */
 export const role = pgTable('role', {
-  id: uuid('id').primaryKey().references(() => entity.id),
+  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
   name: varchar('name', { length: 32 }).unique().notNull(), // A human readable name for the role.
   description: varchar('description', { length: 1024 }), // A description of the role.
   color: varchar('color', { length: 7 }), // The color of the role in hex format.

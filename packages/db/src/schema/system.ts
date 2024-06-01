@@ -12,7 +12,7 @@ import {
 export const systemType = pgEnum('system_type', [ 'boolean', 'number', 'string' ]);
 
 /**
- * The system table serves as a registry for global configuration settings.
+ * The system table serves as a flat registry for global configuration settings.
  */
 export const system = pgTable('system', {
   id: uuid('id').primaryKey().defaultRandom(), // Unique system identifier.

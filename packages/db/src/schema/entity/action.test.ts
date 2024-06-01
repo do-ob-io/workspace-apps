@@ -15,7 +15,9 @@ beforeAll(async () => {
 test('should insert action', async () => {
   // Insert a new entity into the database.
   // This is necessary to create an action.
-  const resultInsertEntity0 = (await db.insert(entity).values({}).returning({
+  const resultInsertEntity0 = (await db.insert(entity).values({
+    type: 'action',
+  }).returning({
     id: entity.id,
   }))[0];
   expect(resultInsertEntity0.id).toMatch(/^[0-9a-f-]{36}$/);

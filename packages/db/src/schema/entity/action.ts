@@ -14,7 +14,7 @@ import { entity } from './entity.ts';
  * processing action.
  */
 export const action = pgTable('action', {
-  id: uuid('id').primaryKey().references(() => entity.id),
+  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
   type: varchar('type', { length: 64 }).unique().notNull(), // A unique type identifier for the action.
   name: varchar('name', { length: 256 }).notNull(), // A human readable name for the action.
   description: varchar('description', { length: 1024 }), // A description of what the actions does.

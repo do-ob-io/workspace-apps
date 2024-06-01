@@ -1,5 +1,14 @@
 import type { Config } from 'tailwindcss';
+import path from 'node:path';
+import fs from 'node:fs';
 const { nextui } = require('@nextui-org/react');
+
+const nextuiContent = path.join(
+  fs.realpathSync('./node_modules/@nextui-org/theme'),
+  'dist/**/*.{js,ts,jsx,tsx}'
+);
+
+console.log(nextuiContent);
 
 const config: Config = {
   darkMode: 'class',

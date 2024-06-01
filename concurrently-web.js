@@ -1,7 +1,7 @@
 import concurrently from 'concurrently';
 
 const { result } = concurrently([
-  { command: 'pnpm web:dev', name: 'Web' },
+  { command: 'pnpm web', name: 'Web' },
   { command: 'pnpm api:watch:lib', name: 'API' },
   { command: 'pnpm api:watch:codegen', name: 'API Codegen' },
   { command: 'pnpm db:watch', name: 'DB' },

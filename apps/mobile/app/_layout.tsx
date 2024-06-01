@@ -7,7 +7,7 @@ export default function IndexLayout() {
 
   return (
     <View className="flex-1">
-      <Pressable className={`${colorScheme === 'dark' ? 'dark' : 'light'} ${colorScheme} flex-1`} onPress={toggleColorScheme}>
+      <Pressable className={`${colorScheme} flex-1`} onPress={toggleColorScheme}>
         <Slot />
       </Pressable>
     </View>

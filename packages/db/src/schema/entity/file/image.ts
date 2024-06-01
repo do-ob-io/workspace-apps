@@ -9,7 +9,7 @@ import { file } from './file.ts';
  * Information about images that can be uploaded.
  */
 export const image = pgTable('image', {
-  id: uuid('id').primaryKey().references(() => file.id),
+  id: uuid('id').primaryKey().references(() => file.id, { onDelete: 'cascade' }),
   height: smallint('height').notNull(),
   width: smallint('width').notNull(),
   animated: boolean('animated').notNull().default(false),

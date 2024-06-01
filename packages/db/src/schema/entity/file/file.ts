@@ -9,7 +9,7 @@ import { entity } from '../entity.ts';
  * Information about files that can be uploaded.
  */
 export const file = pgTable('file', {
-  id: uuid('id').primaryKey().references(() => entity.id),
+  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
   name: varchar('name', { length: 32 }).unique().notNull(), // A hunam readable name for the file.
   description: varchar('description', { length: 1024 }), // A description of the file.
   mimeType: varchar('mime_type', { length: 64 }).notNull(), // The MIME type of the file.

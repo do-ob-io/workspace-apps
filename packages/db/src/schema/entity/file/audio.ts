@@ -9,7 +9,7 @@ import { file } from './file.ts';
  * Information about audio files that can be uploaded.
  */
 export const audio = pgTable('audio', {
-  id: uuid('id').primaryKey().references(() => file.id),
+  id: uuid('id').primaryKey().references(() => file.id, { onDelete: 'cascade' }),
   length: integer('length').notNull(), // The length of the audio in milliseconds (Max ~28 days).
   volume: smallint('volume').notNull(), // The original volume of the audio in decibels.
 });

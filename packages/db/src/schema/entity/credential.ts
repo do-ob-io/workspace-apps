@@ -9,7 +9,7 @@ import { entity } from './entity.ts';
  * Passkey to be used for authentication and authorization of subjects
  */
 export const credential = pgTable('credential', {
-  id: uuid('id').primaryKey().references(() => entity.id),
+  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
   clientId: varchar('client_id', { length: 64 }).notNull(), // The credential identifier provided by the client.
   aaguid: varchar('aaguid', { length: 128 }), // The Authenticator Attestation Globally Unique Identifier https://fidoalliance.org/metadata/
   agentName: varchar('agent_name', { length: 256 }).notNull(), // The name of the agent that generated the credential.

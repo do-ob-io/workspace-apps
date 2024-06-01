@@ -11,7 +11,7 @@ import { user } from './user.ts';
  * Profile about a particular person.
  */
 export const profile = pgTable('profile', {
-  id: uuid('id').primaryKey().references(() => entity.id),
+  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
   userId: uuid('user_id').references(() => user.id), // The user ID that owns the profile.
   givenName: varchar('given_name', { length: 128 }), // The first name of the person.
   familyName: varchar('family_name', { length: 128 }), // The last name of the person.

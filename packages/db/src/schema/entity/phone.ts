@@ -10,7 +10,7 @@ import { user } from './user.ts';
  * Email addresses
  */
 export const phone = pgTable('phone', {
-  id: uuid('id').primaryKey().references(() => entity.id),
+  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
   userId: uuid('user_id').references(() => user.id),
   countryCode: varchar('country_code', { length: 3 }).notNull(), // ISO 3166-1 alpha-3
   number: varchar('number', { length: 14 }).notNull(), // Any number up to 14 digits

@@ -10,7 +10,7 @@ import { user } from './user.ts';
  * Email addresses
  */
 export const email = pgTable('email', {
-  id: uuid('id').primaryKey().references(() => entity.id),
+  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
   userId: uuid('user_id').references(() => user.id),
   address: varchar('address', { length: 255 }).unique().notNull(),
   verified: boolean('verified').notNull().default(false),

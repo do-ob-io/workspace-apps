@@ -1,6 +1,7 @@
 import {
   test,
   expect,
+  assert,
   beforeAll,
 } from 'vitest';
 import { db } from '@-/db';
@@ -15,7 +16,9 @@ beforeAll(async () => {
 test('should insert role', async () => {
   // Insert a new entity into the database.
   // This is necessary to create a role.
-  const resultInsertEntity0 = (await db.insert(entity).values({}).returning())[0];
+  const resultInsertEntity0 = (await db.insert(entity).values({
+    type: 'role',
+  }).returning())[0];
   expect(resultInsertEntity0.id).toMatch(/^[0-9a-f-]{36}$/);
 
   const resultInsert = await db.insert(role).values({
@@ -36,5 +39,35 @@ test('should insert role', async () => {
     description: null,
     color: null,
     icon: null,
+  });
+});
+
+test('should query for the first role with the entity relation', async () => {
+  // Query for all roles with the entity relation.
+  const resultSelect = await db.query.role.findFirst({
+    with: {
+      entity: true,
+    }
+  });
+
+  // Assert that the result is not falsy.
+  assert(resultSelect);
+
+  // Expect that a proper role was inserted correctly.
+  expect(resultSelect).toMatchObject({
+    id: resultSelect.id,
+    name: 'Administrator',
+    description: null,
+    color: null,
+    icon: null,
+    entity: {
+      id: resultSelect.id,
+      type: 'role',
+      created: resultSelect.entity.created,
+      updated: resultSelect.entity.updated,
+      deleted: false,
+      ownerId: null,
+      creatorId: null,
+    },
   });
 });
