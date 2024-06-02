@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "Workspace for multiple applications and shared packages.",
   "type": "module",
+  "packageManager": "pnpm@9.1.4",
   "engines": {
     "node": ">=20",
     "pnpm": ">=9"
