@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@-/api": ["src/server.ts"],
+      "@-/api": ["src/index.ts"],
       "@-/api/*": ["src/*.ts"]
     }
   },

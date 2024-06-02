@@ -1,3 +1,3 @@
-import { server } from './server.ts';
+import { graphql } from './graphql.ts';
 
-export { server };
+export { graphql };

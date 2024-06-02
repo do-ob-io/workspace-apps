@@ -1,8 +1,8 @@
 import { test, expect, assert } from 'vitest';
-import { server } from './server.ts';
+import { graphql } from './graphql.ts';
 
 test('books query', async () => {
-  const result = await server.executeOperation({
+  const result = await graphql.executeOperation({
     query: `
       query {
         books {

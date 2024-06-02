@@ -4,7 +4,7 @@ import {
   beforeAll,
 } from 'vitest';
 import { db } from '@-/db';
-import { action, entity } from '@-/db/schema';
+import { action } from '@-/db/schema';
 
 beforeAll(async () => {
   // Ensure all rows in the action table are deleted.
@@ -13,18 +13,9 @@ beforeAll(async () => {
 
 // Should insert a new action into the database.
 test('should insert action', async () => {
-  // Insert a new entity into the database.
-  // This is necessary to create an action.
-  const resultInsertEntity0 = (await db.insert(entity).values({
-    type: 'action',
-  }).returning({
-    id: entity.id,
-  }))[0];
-  expect(resultInsertEntity0.id).toMatch(/^[0-9a-f-]{36}$/);
 
   const resultInsert = await db.insert(action).values({
-    id: resultInsertEntity0.id,
-    type: 'query:entity',
+    id: 'query:entity',
     name: 'Retrieve Entities',
   }).returning();
 
@@ -36,8 +27,7 @@ test('should insert action', async () => {
 
   // Expect that a proper action was inserted correctly.
   expect(resultInsertAction0).toMatchObject({
-    id: resultInsertEntity0.id,
-    type: 'query:entity',
+    id: 'query:entity',
     name: 'Retrieve Entities',
     description: null,
   });

@@ -1,9 +1,6 @@
-import { relations } from 'drizzle-orm';
 import {
-  pgTable, varchar, uuid, index,
+  pgTable, varchar, index,
 } from 'drizzle-orm/pg-core';
-
-import { entity } from './entity.ts';
 
 /**
  * Records of available actions that can be performed.
@@ -14,22 +11,12 @@ import { entity } from './entity.ts';
  * processing action.
  */
 export const action = pgTable('action', {
-  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
-  type: varchar('type', { length: 64 }).unique().notNull(), // A unique type identifier for the action.
+  id: varchar('id', { length: 64 }).primaryKey(), // A unique key for the action.
   name: varchar('name', { length: 256 }).notNull(), // A human readable name for the action.
   description: varchar('description', { length: 1024 }), // A description of what the actions does.
 }, (table) => ({
-  actionTypeIdx: index('action_type_idx').on(table.type),
-  actionNameIdx: index('action_name_idx').on(table.type),
+  actionNameIdx: index('action_name_idx').on(table.name),
 }));
 
 export type Action = typeof action.$inferSelect;
 export type ActionInsert = typeof action.$inferInsert;
-
-export const actionRelations = relations(action, ({ one }) => ({
-  entity: one(entity, {
-    fields: [ action.id ],
-    references: [ entity.id ],
-    relationName: 'entity',
-  }),
-}));

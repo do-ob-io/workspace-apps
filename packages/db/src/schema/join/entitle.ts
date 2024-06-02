@@ -2,7 +2,7 @@ import { relations } from 'drizzle-orm';
 import { pgTable, uuid, primaryKey } from 'drizzle-orm/pg-core';
 
 import { entity } from '../entity/entity.ts';
-import { action } from '../entity/action.ts';
+import { action } from '../action.ts';
 
 /**
  * Entitles grant entities the ability to perform actions on specific entities.

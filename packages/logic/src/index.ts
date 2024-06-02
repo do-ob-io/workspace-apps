@@ -1,1 +1,3 @@
-export const nothing = null;
+export const logic = {
+  
+};

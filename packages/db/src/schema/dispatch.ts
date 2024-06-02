@@ -9,7 +9,7 @@ import {
 
 import { mutate } from './mutate.ts';
 import { entity } from './entity/entity.ts';
-import { action } from './entity/action.ts';
+import { action } from './action.ts';
 
 /**
  * Whenever a subject performs an action, a dispatch is created to apply the action.
@@ -20,7 +20,7 @@ export const dispatch = pgTable('dispatch', {
   subjectId: uuid('subject_id').notNull().references(() => entity.id), // The subject ID that is responsible for the dispatch.
   actionId: uuid('action_id').notNull().references(() => action.id), // The action that was/will be dispatched.
   created: timestamp('created').defaultNow().notNull(), // When the dispatch was created.
-  submit: timestamp('submit').defaultNow().notNull(), // When the dispatch was/will be submitted.
+  initiate: timestamp('initiate').defaultNow().notNull(), // When the dispatch was/will be initiated.
   payload: jsonb('payload'), // The payload data to send with the action.
   result: jsonb('result'), // The result data from the action.
   message: text('message'), // A message to describe the dispatch.

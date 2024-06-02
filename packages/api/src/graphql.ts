@@ -1,5 +1,5 @@
 import { ApolloServer } from '@apollo/server';
-import { resolvers } from './resolvers.ts';
+import { resolvers } from './graphql/resolvers.ts';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
@@ -14,9 +14,9 @@ try {
 }
 
 /**
- * The Apollo Server instance.
+ * The Apollo GraphQL Server instance.
  */
-export const server = new ApolloServer({
+export const graphql = new ApolloServer({
   typeDefs,
   resolvers,
 });
