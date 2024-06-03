@@ -68,13 +68,14 @@
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react@rc",
     "@vitejs/plugin-react": "^4.3.0",
+    "ajv": "^8.14.0",
     "autoprefixer": "^10.4.19",
     "babel-plugin-module-resolver": "^5.0.2",
     "babel-plugin-react-compiler": "0.0.0-experimental-487cb0e-20240529",
     "concurrently": "^8.2.2",
     "dotenv": "^16.4.5",
-    "drizzle-kit": "^0.21.4",
-    "drizzle-orm": "^0.30.10",
+    "drizzle-kit": "^0.22.1",
+    "drizzle-orm": "^0.31.0",
     "eslint": "^9.3.0",
     "expo": "^51.0.9",
     "expo-constants": "^16.0.2",
@@ -88,6 +89,7 @@
     "next": "rc",
     "postcss": "^8.4.38",
     "postcss-import": "^16.1.0",
+    "postgres": "^3.4.4",
     "react": "rc",
     "react-dom": "rc",
     "react-native": "0.74.0-rc.9",
@@ -98,9 +100,10 @@
     "react-native-web": "^0.19.12",
     "storybook": "next",
     "tailwindcss": "^3.4.3",
-    "ts-node": "^10.9.2",
+    "ts-json-schema-generator": "^2.2.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.12",
-    "vitest": "^1.6.0"
+    "vitest": "^1.6.0",
+    "webpack": "^5.91.0"
   }
 }

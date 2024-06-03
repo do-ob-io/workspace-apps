@@ -1,4 +1,4 @@
-import type { db, schema } from '@-/db';
+import type { Database, schema } from '@-/db';
 
 /**
  * System variables for the application.
@@ -52,5 +52,5 @@ export interface Context {
    * 
    * @see https://orm.drizzle.team/docs
    */
-  database: typeof db;
+  database: Database;
 }

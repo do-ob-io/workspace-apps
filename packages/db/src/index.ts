@@ -1,13 +1,23 @@
+// import postgres from 'postgres';
 import postgres from 'postgres';
-import { drizzle } from 'drizzle-orm/postgres-js';
+import { drizzle, PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import * as schema from './schema.ts';
 
-const DB_URL = process.env.DB_URL || 'postgres://user@localhost:5432/database';
+const POSTGRES_URL = process.env.POSTGRES_URL || 'postgres://user@localhost:5432/database';
 
-const sql = postgres(DB_URL);
-const db = drizzle(sql, { schema });
+export type Database = PostgresJsDatabase<typeof schema>;
+
+let dbInstance: Database;
+
+export async function database() {
+  if (dbInstance) {
+    return dbInstance;
+  }
+  const sql = postgres(POSTGRES_URL);
+
+  return drizzle(sql, { schema });
+};
 
 export {
-  db,
   schema,
 };

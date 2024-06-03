@@ -27,6 +27,7 @@
   "scripts": {
     "test": "vitest --run",
     "build": "vite build --mode production",
-    "watch": "vite build --watch --mode production"
+    "watch": "vite build --watch --mode production",
+    "generate": "node ./generate.js"
   }
 }

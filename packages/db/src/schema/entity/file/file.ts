@@ -9,7 +9,7 @@ import { entity } from '../entity.ts';
  * Information about files that can be uploaded.
  */
 export const file = pgTable('file', {
-  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
+  $id: uuid('id').primaryKey().references(() => entity.$id, { onDelete: 'cascade' }),
   name: varchar('name', { length: 32 }).unique().notNull(), // A human readable name for the file.
   description: varchar('description', { length: 1024 }), // A description of the file.
   mimeType: varchar('mime_type', { length: 64 }).notNull(), // The MIME type of the file.
@@ -25,8 +25,8 @@ export type FileInsert = typeof file.$inferInsert;
 
 export const fileRelations = relations(file, ({ one }) => ({
   entity: one(entity, {
-    fields: [ file.id ],
-    references: [ entity.id ],
+    fields: [ file.$id ],
+    references: [ entity.$id ],
     relationName: 'entity',
   }),
 }));

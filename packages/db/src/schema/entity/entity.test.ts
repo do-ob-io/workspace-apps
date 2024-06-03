@@ -1,13 +1,15 @@
 import {
   test, expect, beforeAll,
 } from 'vitest';
-import { db } from '@-/db';
+import { Database, database } from '@-/db';
 import { entity } from '@-/db/schema';
 
-let ownerId: string;
-let creatorId: string;
+let db: Database;
+let $owner: string;
+let $creator: string;
 
 beforeAll(async () => {
+  db = await database();
   // Ensure all rows in the entity table are deleted.
   await db.delete(entity);
 });
@@ -32,24 +34,24 @@ test('should insert entity', async () => {
     updated: expect.any(Date),
     // The deleted property should be a boolean set to false.
     deleted: false,
-    // The ownerId property should be null.
-    ownerId: null,
-    // The creatorId property should be null.
-    creatorId: null,
+    // The $owner property should be null.
+    $owner: null,
+    // The $creator property should be null.
+    $creator: null,
   });
 
   // Assign the owner id for use in other tests.
-  ownerId = resultInsertEntity0.id;
+  $owner = resultInsertEntity0.$id;
 
   // Assign the creator id for use in other tests.
-  creatorId = resultInsertEntity0.id;
+  $creator = resultInsertEntity0.$id;
 });
 
 /**
  * Should insert a new entity with an owner and creator into the database.
  */
 test('should insert entity with owner', async () => {
-  const resultInsert = await db.insert(entity).values({ ownerId, creatorId }).returning();
+  const resultInsert = await db.insert(entity).values({ $owner, $creator }).returning();
 
   // The result should be an array with a single object.
   expect(resultInsert).toHaveLength(1);
@@ -65,9 +67,9 @@ test('should insert entity with owner', async () => {
     updated: expect.any(Date),
     // The deleted property should be a boolean set to false.
     deleted: false,
-    // The ownerId property should be the same as the previously inserted entity id.
-    ownerId,
-    // The creatorId property should be the same as the previously inserted entity id.
-    creatorId,
+    // The $owner property should be the same as the previously inserted entity id.
+    $owner,
+    // The $creator property should be the same as the previously inserted entity id.
+    $creator,
   });
 });

@@ -20,9 +20,9 @@ export const mutateOperation = pgEnum('mutate_operation', [ 'create', 'update', 
  * This should be very helpful for auditing and debugging as well as reversing.
  */
 export const mutate = pgTable('mutate', {
-  id: uuid('id').primaryKey().defaultRandom(), // Unique mutate identifier.
-  dispatchId: uuid('dispatch_id').notNull().references(() => dispatch.id), // The dispatch ID that was responsible for the mutation.
-  entityId: uuid('record_id').notNull().references(() => entity.id), // The record ID that was changed.
+  $id: uuid('id').primaryKey().defaultRandom(), // Unique mutate identifier.
+  $dispatch: uuid('dispatch_id').notNull().references(() => dispatch.$id), // The dispatch ID that was responsible for the mutation.
+  $entity: uuid('record_id').notNull().references(() => entity.$id), // The record ID that was changed.
   operation: mutateOperation('operation').notNull(), // The operation performed on the record.
   occurred: timestamp('occurred').defaultNow().notNull(), // When the operation was performed.
   mutation: jsonb('mutation').notNull(), // The mutation that was performed.
@@ -33,14 +33,14 @@ export type MutateInsert = typeof mutate.$inferInsert;
 
 export const mutateRelations = relations(mutate, ({ one }) => ({
   dispatch: one(dispatch, {
-    fields: [ mutate.dispatchId ],
-    references: [ dispatch.id ],
+    fields: [ mutate.$dispatch ],
+    references: [ dispatch.$id ],
     relationName: 'dispatch',
   }),
   
   entity: one(entity, {
-    fields: [ mutate.entityId ],
-    references: [ entity.id ],
+    fields: [ mutate.$entity ],
+    references: [ entity.$id ],
     relationName: 'entity',
   }),
 }));

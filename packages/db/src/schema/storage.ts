@@ -8,7 +8,7 @@ import { bytea } from '@-/db/custom';
  * A table for storing byte data that can be referenced by slugs.
  */
 export const storage = pgTable('storage', {
-  slug: varchar('slug').primaryKey(), // A readable unique identifier for the storage item.
+  $slug: varchar('slug').primaryKey(), // A readable unique identifier for the storage item.
   data: bytea('data').notNull(), // The binary data.
 });
 

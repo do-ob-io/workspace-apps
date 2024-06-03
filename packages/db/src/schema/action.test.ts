@@ -3,10 +3,13 @@ import {
   expect,
   beforeAll,
 } from 'vitest';
-import { db } from '@-/db';
+import { database, Database } from '@-/db';
 import { action } from '@-/db/schema';
 
+let db: Database;
+
 beforeAll(async () => {
+  db = await database();
   // Ensure all rows in the action table are deleted.
   await db.delete(action);
 });
@@ -15,8 +18,7 @@ beforeAll(async () => {
 test('should insert action', async () => {
 
   const resultInsert = await db.insert(action).values({
-    id: 'query:entity',
-    name: 'Retrieve Entities',
+    $id: 'Query_Entity',
   }).returning();
 
   // The result should be an array with a single object.
@@ -27,8 +29,7 @@ test('should insert action', async () => {
 
   // Expect that a proper action was inserted correctly.
   expect(resultInsertAction0).toMatchObject({
-    id: 'query:entity',
-    name: 'Retrieve Entities',
+    $id: 'Query_Entity',
     description: null,
   });
 });

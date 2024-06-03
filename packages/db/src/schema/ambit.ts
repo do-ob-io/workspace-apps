@@ -10,7 +10,7 @@ import {
  * a subject can only edit their own profile, but not another subject's profile.
  */
 export const ambit = pgTable('ambit', {
-  id: varchar('id', { length: 64 }).primaryKey(), // A unique key for the ambit.
+  $id: varchar('id', { length: 64 }).primaryKey(), // A unique key for the ambit.
   name: varchar('name', { length: 256 }).notNull(), // A human readable name for the ambit.
   description: varchar('description', { length: 1024 }), // A description of what the ambits does.
 }, (table) => ({

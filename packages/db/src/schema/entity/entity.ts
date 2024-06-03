@@ -14,13 +14,13 @@ import { credential } from './credential.ts';
  * Entity table for resting data meta information.
  */
 export const entity = pgTable('entity', {
-  id: uuid('id').primaryKey().defaultRandom(),
+  $id: uuid('id').primaryKey().defaultRandom(),
   type: varchar('type', { length: 64 }), // The type of entity. Should always be the table name connected with this entity.
   created: timestamp('created').defaultNow().notNull(), // The time this entity was created.
   updated: timestamp('updated').defaultNow().notNull(), // The time this entity was last updated.
   deleted: boolean('deleted').notNull().default(false), // Flag to determine if this entity is to be considered deleted.
-  ownerId: uuid('owner_id'), // The possible entity that owns this entity (null would indicate it is system owned).
-  creatorId: uuid('creator_id'), // The possible entity that created this entity (null would indicate it was system created).
+  $owner: uuid('owner_id'), // The possible entity that owns this entity (null would indicate it is system owned).
+  $creator: uuid('creator_id'), // The possible entity that created this entity (null would indicate it was system created).
 });
 
 export type Entity = typeof entity.$inferSelect;
@@ -31,8 +31,8 @@ export const entityRelations = relations(entity, ({ one, many }) => ({
    * The entity that owns this entity.
    */
   owner: one(entity, {
-    fields: [ entity.ownerId ],
-    references: [ entity.id ],
+    fields: [ entity.$owner ],
+    references: [ entity.$id ],
     relationName: 'owner',
   }),
 
@@ -40,8 +40,8 @@ export const entityRelations = relations(entity, ({ one, many }) => ({
    * The entity that created this entity.
    */
   creator: one(entity, {
-    fields: [ entity.creatorId ],
-    references: [ entity.id ],
+    fields: [ entity.$creator ],
+    references: [ entity.$id ],
     relationName: 'creator',
   }),
 

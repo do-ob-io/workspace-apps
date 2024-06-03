@@ -10,8 +10,8 @@ import { user } from './user.ts';
  * Email addresses
  */
 export const email = pgTable('email', {
-  id: uuid('id').primaryKey().references(() => entity.id, { onDelete: 'cascade' }),
-  userId: uuid('user_id').references(() => user.id),
+  $id: uuid('id').primaryKey().references(() => entity.$id, { onDelete: 'cascade' }),
+  $user: uuid('user_id').references(() => user.$id),
   address: varchar('address', { length: 255 }).unique().notNull(),
   verified: boolean('verified').notNull().default(false),
 }, (table) => ({
@@ -24,14 +24,14 @@ export type EmailInsert = typeof email.$inferInsert;
 
 export const emailRelations = relations(email, ({ one }) => ({
   entity: one(entity, {
-    fields: [ email.id ],
-    references: [ entity.id ],
+    fields: [ email.$id ],
+    references: [ entity.$id ],
     relationName: 'entity',
   }),
 
   user: one(user, {
-    fields: [ email.userId ],
-    references: [ user.id ],
+    fields: [ email.$user ],
+    references: [ user.$id ],
     relationName: 'user',
   }),
 }));
