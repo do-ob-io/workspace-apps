@@ -10,21 +10,15 @@ export default async function Home() {
 
   const settings = await getSystemSettings();
 
+  const appName = settings.find(setting => setting.$id === 'name')?.value;
+  const appDescription = settings.find(setting => setting.$id === 'description')?.value;
+
   return (
     <main className="flex min-h-screen flex-col gap-4 items-center p-24 bg-background text-foreground">
       <h1>Hello React/NextUI/NextJS Web Application with TailwindCSS!</h1>
       <ThemeSwitch prefer={process.env.NEXT_PUBLIC_THEME as 'light' | 'dark'} />
-      <ul>
-        {settings.map(setting => (
-          <li>
-            <div key={setting.$id}>
-              <h2>{setting.$id}</h2>
-              <p>{setting.description}</p>
-              <p>{setting.value}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {appName && <h2>{appName}</h2>}
+      {appDescription && <p>{appDescription}</p>}
     </main>
   );
 }

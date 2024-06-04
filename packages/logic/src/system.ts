@@ -1,3 +1,9 @@
+/**
+ * @module system
+ * This module contains system settings and functions.
+ * 
+ * The NextJS application utilizes the system setup during its instrumentation phase. 
+ */
 import { database, schema } from '@-/db';
 
 /**
