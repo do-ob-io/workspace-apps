@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 import path from 'node:path';
 import fs from 'node:fs';
-const { nextui } = require('@nextui-org/react');
+import { nextui }  from '@nextui-org/react';
 
 const nextuiContent = path.join(
   fs.realpathSync('./node_modules/@nextui-org/theme'),
