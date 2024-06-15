@@ -1,8 +1,27 @@
 import type { StorybookConfig } from '@storybook/nextjs';
+import { resolve, join } from 'node:path';
+import fs from 'node:fs';
+
+const packagesPath = resolve(__dirname, '../packages');
+const packages = fs.readdirSync(packagesPath)
+  .filter((file) => fs.statSync(join(packagesPath, file)).isDirectory());
+
+const aliases = packages.reduce((acc, pack) => {
+  const srcFolder = join(packagesPath, pack, 'src');
+  const hasSrc = fs.existsSync(srcFolder);
+  if (!hasSrc) {
+    return acc;
+  }
+
+  acc[`@-/${pack}$`] = packagesPath + '/' + pack + '/src';
+
+  return acc;
+}, {});
+
+console.log(aliases);
 
 const config: StorybookConfig = {
   stories: [
-    '../packages/ui/src/**/*.stories.@(js|jsx|ts|tsx)',
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
@@ -19,6 +38,18 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: 'tag',
+  },
+  webpackFinal: async (config) => {
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve?.alias,
+          ...aliases,
+        },
+      },
+    };
   },
 };
 export default config;

@@ -84,6 +84,7 @@
     "expo-status-bar": "^1.12.1",
     "expo-system-ui": "^3.0.4",
     "framer-motion": "^11.2.10",
+    "glob": "^10.4.1",
     "graphql": "^16.8.1",
     "nativewind": "^4.0.36",
     "next": "rc",
