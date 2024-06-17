@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeSwitch } from '@-/ui';
 import { settings } from '@-/logic/system';
 
 export async function getSystemSettings() {
@@ -14,11 +13,16 @@ export default async function Home() {
   const appDescription = settings.find(setting => setting.$id === 'description')?.value;
 
   return (
-    <main className="flex min-h-screen flex-col gap-4 items-center p-24 bg-background text-foreground">
-      <h1>Hello React/NextUI/NextJS Web Application with TailwindCSS!</h1>
-      <ThemeSwitch prefer={process.env.NEXT_PUBLIC_THEME as 'light' | 'dark'} />
-      {appName && <h2>{appName}</h2>}
-      {appDescription && <p>{appDescription}</p>}
+    <main className="m-auto flex min-h-screen flex-col gap-4 p-24 text-foreground">
+      <article className="prose mx-auto w-full max-w-screen-md dark:prose-invert">
+        <h1>Welcome to the Workspace</h1>
+        <h2></h2>
+        <p>My initial system settings</p>
+        <ul>
+          <li>{appName}</li>
+          <li>{appDescription}</li>
+        </ul>
+      </article>
     </main>
   );
 }
