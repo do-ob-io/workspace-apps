@@ -75,6 +75,7 @@
     "autoprefixer": "^10.4.19",
     "babel-plugin-module-resolver": "^5.0.2",
     "concurrently": "^8.2.2",
+    "cssnano": "^7.0.2",
     "dotenv": "^16.4.5",
     "drizzle-kit": "^0.22.1",
     "drizzle-orm": "^0.31.0",
