@@ -8,7 +8,7 @@ const nextConfig = {
   webpack: (config ) => {
     config.plugins.push(
       new webpack.IgnorePlugin({
-        resourceRegExp: /^node:stream$|^pg-native$|^cloudflare:sockets$/,
+        resourceRegExp: /^pg-native$|^cloudflare:sockets$/,
       }),
     );
     return config;
